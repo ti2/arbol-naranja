@@ -19,5 +19,13 @@
 <body <?php body_class(); ?>>
 	<header role="banner">
 		<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-		<h2><?php bloginfo( 'description' ); ?></h2>
+
+		<nav role="navigation">
+			<h3 class="menu-toggle">Secciones</h3>
+			<ul>
+			<?php wp_list_categories('orderby=ID&title_li='); ?>
+			</ul>
+		</nav>
+
+		<h3><a href="">Nuestra empresa</a></h3>
 	</header>
