@@ -9,7 +9,8 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-	<link href="css/normalize.css" rel="stylesheet" media="all">
+	<link href="<?php bloginfo('template_directory'); ?>/css/normalize.css" rel="stylesheet" media="all">
+	<link href="<?php bloginfo('template_directory'); ?>/css/main.css" rel="stylesheet" media="all">
 
 	<!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
 
@@ -17,15 +18,17 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<header role="banner">
-		<h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<header id="header" role="banner">
+		<h1 id="header-logo">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="ir logo"><?php bloginfo( 'name' ); ?></a>
+		</h1>
 
-		<nav role="navigation">
+		<h3 id="company-web-link"><a href="">Nuestra empresa</a></h3>
+
+		<nav id="main-nav" role="navigation">
 			<h3 class="menu-toggle">Secciones</h3>
 			<ul>
 			<?php wp_list_categories('orderby=ID&title_li='); ?>
 			</ul>
 		</nav>
-
-		<h3><a href="">Nuestra empresa</a></h3>
 	</header>
