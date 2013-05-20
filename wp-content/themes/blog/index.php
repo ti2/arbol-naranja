@@ -5,20 +5,18 @@
 </main>
 
 <div id="articles">
-	<h1>Últimos artículos</h1>
-	<?php wp_nav_menu( array('theme_location' => 'social' )); ?>
+	<h1 id="articles-title">Últimos artículos</h1>
 	<?php get_search_form(); ?>
+	<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
-	<ul>
+	<div id="article-list">
 		<?php while ( have_posts() ) : the_post(); ?>
-		<li>
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<a href="<?php the_permalink(); ?>">
-					<h1><?php the_title(); ?></h1>
-					<?php the_post_thumbnail(); ?>
-				</a>
-			</article>
-		</li>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<a href="<?php the_permalink(); ?>">
+				<h1><?php the_title(); ?></h1>
+				<?php the_post_thumbnail(); ?>
+			</a>
+		</article>
 		<?php endwhile; ?>
 
 		<?php
@@ -28,7 +26,7 @@
 			echo '<button>Cargar más artículos</button>';
 		}
 		?>
-	</ul>
+	</div>
 </div>
 
 <?php get_footer(); ?>

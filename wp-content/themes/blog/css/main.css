@@ -1,5 +1,6 @@
 body {
     background-color: #ededed;
+    color: #4f4f4f;
     text-transform: uppercase;
 }
 
@@ -9,8 +10,8 @@ a {
 }
 
 #header {
-    width: 970px;
     margin: 16px auto 0;
+    width: 970px;
 }
 #header-logo {
     float: left;
@@ -18,7 +19,7 @@ a {
 }
 .logo {
     background-image: url(../img/logoweb.png);
-    display: block;
+    display: inline-block;
     height: 43px;
     width: 220px;
 }
@@ -64,6 +65,85 @@ a {
     margin: 0 auto;
 }
 
+#articles {
+    border-top: 2px solid #ccc;
+    margin: 32px auto 0;
+    width: 970px;
+}
+#articles-title {
+    float: left;
+    margin: 22px 0;
+}
+#articles-title:before {
+    border-color: transparent #4f4f4f;
+    border-style: solid;
+    border-width: 9px 0 9px 15px;
+    content: '';
+    display: inline-block;
+    margin: 0 6px 3px 0;
+}
+
+#searchform {
+    float: right;
+    margin: 22px 0;
+}
+
+#articles .menu-social {
+    float: right;
+}
+.menu-social ul {
+    margin: 22px 0;
+    padding: 0;
+}
+.menu-social li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 4px;
+}
+
+#article-list {
+    clear: both;
+}
+
+#footer {
+    margin: 16px auto;
+    text-align: center;
+    width: 970px;
+}
+
+#footer h1 {
+    margin: 0 auto;
+}
+.big-logo {
+    background-image: url(../img/webfooter.png);
+    display: inline-block;
+    height: 228px;
+    width: 222px;
+}
+#footer p {
+    margin: 0 auto;
+}
+
+.menu-footer ul {
+    margin: 32px 0 24pz;
+    padding: 0;
+}
+.menu-footer li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 4px;
+}
+.menu-footer li:before {
+    border-color: transparent #444;
+    border-style: solid;
+    border-width: 6px 0 6px 12px;
+    content: '';
+    display: inline-block;
+    margin: 0 3px 0px 0;
+}
+.menu-footer li a {
+    color: #444;
+}
 
 /* ==========================================================================
    Helper classes from H5BP
