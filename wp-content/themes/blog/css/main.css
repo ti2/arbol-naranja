@@ -125,6 +125,17 @@ a {
 #article-list {
     clear: both;
 }
+#article-list .post {
+    position: relative;
+}
+.title-over-img {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    color: #fff;
+    font-size: 27px;
+    margin: 0;
+}
 
 #footer {
     margin: 16px auto;

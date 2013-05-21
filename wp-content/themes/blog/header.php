@@ -14,7 +14,11 @@
 
 	<!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
 
-	<?php wp_head(); ?>
+	<?php
+	wp_enqueue_script( 'isotope', get_bloginfo('template_directory').'/js/jquery.isotope.min.js', array('jquery'), '1.5.25', true);
+	wp_enqueue_script( 'main', get_bloginfo('template_directory').'/js/main.js', array('jquery'), '', true);
+	wp_head();
+	?>
 </head>
 
 <body <?php body_class(); ?>>
