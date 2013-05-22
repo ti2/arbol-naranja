@@ -128,13 +128,22 @@ a {
 #article-list .post {
     position: relative;
 }
+#article-list .post img {
+    vertical-align: top;
+}
 .title-over-img {
-    position: absolute;
     bottom: 16px;
-    left: 16px;
     color: #fff;
+    font-size: 20px;
+    left: 0;
+    margin: 0 16px;
+    position: absolute;
+}
+.size-grande .title-over-img {
     font-size: 27px;
-    margin: 0;
+}
+.size-ancho .title-over-img {
+    font-size: 45px;
 }
 
 #footer {
