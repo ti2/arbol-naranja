@@ -1,24 +1,29 @@
 <?php get_header(); ?>
 
 <main role="main">
-	<?php if ( function_exists( 'meteor_slideshow' ) ) { meteor_slideshow(); } ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+	<article id="main-post-<?php the_ID(); ?>" <?php post_class('main-post'); ?>>
+		<header>
+			<h1><?php the_title(); ?></h1>
+			<h3><?php the_tags( '', ' - ' ); ?></h3>
+		</header>
+
+		<div class="post-content">
+			<?php the_content(); ?>
+		</div>
+	</article>
+	<?php endwhile; ?>
 </main>
 
 <div id="articles">
-	<h1 id="articles-title">
-		<?php
-		if (is_archive()) {
-			single_cat_title();
-		}else{
-			echo 'Últimos artículos';
-		}
-		?>
-	</h1>
+	<h1 id="articles-title">Últimos artículos</h1>
 
 	<?php get_search_form(); ?>
 	<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
 	<div id="article-list">
+		<?php query_posts(''); ?>
+
 		<?php while ( have_posts() ) : the_post(); ?>
 
 		<?php
@@ -54,6 +59,8 @@
 		if ($wp_query->found_posts > $postsperpage) {
 			echo '<button>Cargar más artículos</button>';
 		}
+
+		wp_reset_query();
 		?>
 	</div>
 </div>

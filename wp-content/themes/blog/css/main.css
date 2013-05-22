@@ -21,6 +21,7 @@ a {
     text-decoration: none;
 }
 
+/* HEADER */
 #header {
     margin: 16px auto 0;
     width: 970px;
@@ -89,12 +90,13 @@ a {
     color: #b3b3b3;
 }
 
+/* HOME */
 #meteor-slideshow {
     margin: -63px auto 0;
 }
 
 #articles {
-    border-top: 2px solid #ccc;
+    border-top: 2px solid #999;
     margin: 32px auto 0;
     width: 970px;
 }
@@ -155,6 +157,40 @@ a {
     font-size: 45px;
 }
 
+/* SINGLE */
+.main-post {
+    margin: 0 auto;
+    text-align: center;
+    width: 970px;
+}
+.main-post header {
+    padding: 0 70px;
+}
+.main-post h1 {
+    color: #888;
+    font-size: 67px;
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+.main-post h3 {
+    color: #e27923;
+    font-size: 28px;
+    font-weight: normal;
+    margin-top: 0;
+}
+.post-content {
+    font: 21px Garamond, "Times New Roman", Times, serif;
+    margin: 40px 0 70px;
+    padding: 0 70px;
+    text-align: justify;
+    text-transform: none;
+}
+.post-content h4 {
+    font-size: 25px;
+}
+
+/* FOOTER */
 #footer {
     margin: 16px auto;
     text-align: center;
