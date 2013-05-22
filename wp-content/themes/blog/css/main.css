@@ -63,10 +63,19 @@ a {
 
 #main-nav {
     clear: both;
+    margin: 0 auto 8px;
+    position: relative;
+    width: 100%;
+    z-index: 99;
+}
+#main-nav.fixed-nav {
+    left: 0;
+    position: fixed;
+    top: 0;
 }
 #main-nav ul {
     background-color: rgba(0,0,0,.8);
-    margin: 8px auto;
+    margin: 0;
     padding: 0;
     text-align: center;
 }
@@ -81,7 +90,7 @@ a {
 }
 
 #meteor-slideshow {
-    margin: 0 auto;
+    margin: -63px auto 0;
 }
 
 #articles {

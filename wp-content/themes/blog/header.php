@@ -30,10 +30,10 @@
 		<h3 id="company-web-link"><a href="">Nuestra empresa</a></h3>
 
 		<h3 class="menu-toggle">Secciones</h3>
+	</header>
 
 		<nav id="main-nav" role="navigation">
 			<ul>
 			<?php wp_list_categories('orderby=ID&title_li='); ?>
 			</ul>
 		</nav>
-	</header>
