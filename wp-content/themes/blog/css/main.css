@@ -164,7 +164,8 @@ a {
     width: 970px;
 }
 .main-post header {
-    padding: 0 70px;
+    border-bottom: 2px solid #DDDDDD;
+    margin: 0 70px;
 }
 .main-post h1 {
     color: #888;
@@ -179,9 +180,19 @@ a {
     font-weight: normal;
     margin-top: 0;
 }
+.dd_buttons {
+    text-align: center;
+}
+.dd_buttons .dd_button {
+    display: inline-block;
+    float: none;
+}
+.fb_iframe_widget span {
+    vertical-align: top !important;
+}
 .post-content {
     font: 21px Garamond, "Times New Roman", Times, serif;
-    margin: 40px 0 70px;
+    margin: 30px 0 70px;
     padding: 0 70px;
     text-align: justify;
     text-transform: none;
