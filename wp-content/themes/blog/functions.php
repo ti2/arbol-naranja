@@ -12,3 +12,21 @@ function arbol_setup() {
 	) );
 }
 add_action( 'after_setup_theme', 'arbol_setup' );
+
+function create_taxonomies()
+{
+	register_taxonomy(
+		'size',
+		'post',
+		array(
+			'label' => 'Tamaño',
+			'hierarchical' => true,
+			'rewrite' => array(
+				'manage_terms' => 'manage_options',
+				'edit_terms' => 'manage_options',
+				'delete_terms' => 'manage_options'
+				)
+			)
+		);
+}
+add_action( 'init', 'create_taxonomies' );

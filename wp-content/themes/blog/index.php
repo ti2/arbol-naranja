@@ -11,12 +11,32 @@
 
 	<div id="article-list">
 		<?php while ( have_posts() ) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+		<?php
+			$sizes = get_the_terms( $post->ID, 'size' );
+			if ($sizes == 'false') {
+				$size_class = 'size-pequeno';
+			}else{
+				$first_size = reset($sizes);
+				$size_class = 'size-'.$first_size->slug;
+			}
+		?>
+
+		<article id="post-<?php the_ID(); ?>" <?php post_class($size_class); ?>>
 			<a href="<?php the_permalink(); ?>">
 				<h1 class="title-over-img"><?php the_title(); ?></h1>
-				<?php the_post_thumbnail(); ?>
+				<?php
+				if ($first_size->slug == 'ancho') {
+					the_post_thumbnail('wide-thumb');
+				}elseif ($first_size->slug == 'grande') {
+					the_post_thumbnail('big-thumb');
+				}else{
+					the_post_thumbnail();
+				}
+				?>
 			</a>
 		</article>
+
 		<?php endwhile; ?>
 
 		<?php
