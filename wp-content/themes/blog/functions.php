@@ -1,5 +1,7 @@
 <?php
 function arbol_setup() {
+	add_theme_support( 'post-formats', array( 'video' ) );
+
 	add_theme_support( 'post-thumbnails' );
 	//margin between images: 20px;
 	set_post_thumbnail_size( 145, 145, true );
@@ -30,3 +32,34 @@ function create_taxonomies()
 		);
 }
 add_action( 'init', 'create_taxonomies' );
+
+function my_post_fields( $groups ) {
+
+	$my_group = array(
+		'post' => array(
+			array(
+				'id'     => 'custom_fields',
+				'title'  => 'Info Adicional',
+				'desc'   => '',
+				/**
+				 * Optional. Uncomment this to only display the metadata settings for
+				 * certain user roles.
+				 */
+				// 'role'   => array( 'administrator', 'editor' ),
+				'fields' => array(
+					array(
+						'id'      => 'video_url',
+						'title'   => 'Youtube video url',
+						'desc'    => '',
+						'type'    => 'text',
+						'default' => ''
+					)
+				)
+			)
+		)
+	);
+
+	$groups[] = $my_group;
+	return $groups;
+}
+add_filter( 'kc_post_settings', 'my_post_fields' );

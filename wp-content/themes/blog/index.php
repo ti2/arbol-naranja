@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main role="main">
+<main id="main" role="main">
 	<?php if ( function_exists( 'meteor_slideshow' ) ) { meteor_slideshow(); } ?>
 </main>
 

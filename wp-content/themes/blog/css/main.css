@@ -91,6 +91,10 @@ a {
 }
 
 /* HOME */
+#main {
+    clear: both;
+}
+
 #meteor-slideshow {
     margin: -63px auto 0;
 }
@@ -162,6 +166,11 @@ a {
     margin: 0 auto;
     text-align: center;
     width: 970px;
+}
+.post-video {
+    width: 970px;
+    height: 546px;
+    text-align: left;
 }
 .main-post header {
     border-bottom: 2px solid #DDDDDD;
