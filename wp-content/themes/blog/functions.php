@@ -8,6 +8,15 @@ function arbol_setup() {
 	add_image_size( 'wide-thumb', 640, 310, true );
 	add_image_size( 'big-thumb', 310, 310, true );
 
+	if (class_exists('MultiPostThumbnails')) {
+		new MultiPostThumbnails(
+			array(
+				'label' => 'Segunda Imagen',
+				'id' => 'secondary-image'
+			)
+		);
+	}
+
 	register_nav_menus( array(
 		'footer' => 'Menú para la parte inferior del sitio',
 		'social' => 'Enlaces a redes sociales'

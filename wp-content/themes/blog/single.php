@@ -48,12 +48,14 @@
 				<h1 class="title-over-img"><?php the_title(); ?></h1>
 				<?php
 				if ($first_size->slug == 'ancho') {
-					the_post_thumbnail('wide-thumb');
+					$thumb_size = 'wide-thumb';
 				}elseif ($first_size->slug == 'grande') {
-					the_post_thumbnail('big-thumb');
+					$thumb_size = 'big-thumb';
 				}else{
-					the_post_thumbnail();
+					$thumb_size = 'post-thumbnail';
 				}
+				the_post_thumbnail($thumb_size);
+				MultiPostThumbnails::the_post_thumbnail('post', 'secondary-image', null, $thumb_size, array('class' => 'hidden'));
 				?>
 			</a>
 		</article>

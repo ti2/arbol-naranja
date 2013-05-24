@@ -21,4 +21,15 @@
 	}
 	stickyNav();
 
+	var toggleImg = function()
+	{
+		var $images = $(this).find('img');
+		if ($images.length > 1) {
+			var $hidden_img = $images.filter('.hidden');
+			$hidden_img.removeClass('hidden');
+			$hidden_img.siblings('img').addClass('hidden');
+		}
+	}
+	$('#article-list .post').hover(toggleImg, toggleImg);
+
 })(jQuery);

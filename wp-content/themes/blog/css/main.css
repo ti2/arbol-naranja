@@ -143,6 +143,18 @@ a {
 #article-list .post {
     position: relative;
 }
+.size-pequeno {
+    height: 145px;
+    width: 145px;
+}
+.size-grande {
+    height: 310px;
+    width: 310px;
+}
+.size-ancho {
+    height: 310px;
+    width: 640px;
+}
 #article-list .post img {
     vertical-align: top;
 }
