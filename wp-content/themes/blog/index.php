@@ -7,9 +7,12 @@
 <div id="articles">
 	<h1 id="articles-title">
 		<?php
-		if (is_archive()) {
+		$search_query = get_search_query();
+		if ($search_query) {
+			echo 'Resultados para: '.$search_query;
+		} elseif (is_archive()) {
 			single_cat_title();
-		}else{
+		} else {
 			echo 'Últimos artículos';
 		}
 		?>
@@ -19,13 +22,13 @@
 	<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
 	<div id="article-list">
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 		<?php
 			$sizes = get_the_terms( $post->ID, 'size' );
-			if ($sizes == 'false') {
+			if ($sizes == false) {
 				$size_class = 'size-pequeno';
-			}else{
+			} else {
 				$first_size = reset($sizes);
 				$size_class = 'size-'.$first_size->slug;
 			}
@@ -57,6 +60,10 @@
 			echo '<button>Cargar más artículos</button>';
 		}
 		?>
+
+		<?php else : ?>
+			<?php echo 'Su busqueda no ha arrojado resultados'; ?>
+		<?php endif; ?>
 	</div>
 </div>
 

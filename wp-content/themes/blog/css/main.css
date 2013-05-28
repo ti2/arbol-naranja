@@ -121,7 +121,12 @@ a {
 
 #searchform {
     float: right;
-    margin: 22px 0;
+    margin: 22px 0 22px 12px;
+}
+#searchfields {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 #articles .menu-social {
