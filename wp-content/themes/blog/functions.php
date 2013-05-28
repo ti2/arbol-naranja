@@ -72,3 +72,8 @@ function my_post_fields( $groups ) {
 	return $groups;
 }
 add_filter( 'kc_post_settings', 'my_post_fields' );
+
+function modify_youtube_embed_url($html, $url, $args) {
+	return str_replace("?feature=oembed", "?feature=oembed&wmode=opaque", $html);
+}
+add_filter('oembed_result', 'modify_youtube_embed_url', 10, 3);
