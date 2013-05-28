@@ -42,6 +42,7 @@ function create_taxonomies()
 }
 add_action( 'init', 'create_taxonomies' );
 
+//custom fields para los posts
 function my_post_fields( $groups ) {
 
 	$my_group = array(
@@ -73,6 +74,42 @@ function my_post_fields( $groups ) {
 }
 add_filter( 'kc_post_settings', 'my_post_fields' );
 
+//opciones del tema, para el home page
+function mytheme_options( $settings ) {
+	$options = array(
+		array(
+			'id'     => 'home_options',
+			'title'  => 'Contenido Footer',
+			'fields' => array(
+				array(
+					'id'      => 'contact_info',
+					'title'   => 'Info de contacto',
+					'type'    => 'editor'
+				),
+			)
+		),
+		// You can add more sections here...
+	);
+
+	$my_settings = array(
+		'prefix'        => 'nso',    // Use only alphanumerics, dashes and underscores here!
+		'menu_location' => 'themes.php',  // options-general.php | index.php | edit.php | upload.php | link-manager.php | edit-comments.php | themes.php | users.php | tools.php
+		'menu_title'    => 'Opciones Generales',
+		'page_title'    => 'Opciones Generales',
+		'display'       => 'metabox',     // plain|metabox. If you chose to use metabox, don't forget to set their settings too
+		'metabox'       => array(
+			'context'   => 'normal',  // normal | advanced | side
+			'priority'  => 'default', // default | high | low
+		),
+		'options'       => $options
+	);
+
+	$settings[] = $my_settings;
+	return $settings;
+}
+add_filter( 'kc_plugin_settings', 'mytheme_options' );
+
+//wmode para videos de youtube
 function modify_youtube_embed_url($html, $url, $args) {
 	return str_replace("?feature=oembed", "?feature=oembed&wmode=opaque", $html);
 }

@@ -240,12 +240,12 @@ a {
 .big-logo {
     background-image: url(../img/webfooter.png);
     display: inline-block;
-    height: 228px;
+    height: 208px;
     width: 222px;
 }
-#contact-info {
-    margin: 0 auto;
-    font: 14px calibri, sans-serif;
+#footer p {
+    margin: 0 auto 28px;
+    font: bold 14px calibri, sans-serif;
 }
 
 .menu-footer ul {
