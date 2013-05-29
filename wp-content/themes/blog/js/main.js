@@ -21,7 +21,6 @@
 	        }
 	    });
 	}
-	stickyNav();
 
 	/* THUMB IMG HOVER */
 	var toggleImg = function()
@@ -36,9 +35,12 @@
 	$('#article-list .post').hover(toggleImg, toggleImg);
 
 	/* SEARCH FIELD HORIZONTAL SLIDE */
-	var search_width = $('#searchfields').width();
-	//console.log(search_width);
-	$('#searchfields').hide().width(0);
+	var search_width;
+	var hideSearch = function()
+	{
+		search_width = $('#searchfields').width();
+		$('#searchfields').hide().width(0);
+	}
 
 	var toggleSearch = function ()
 	{
@@ -52,6 +54,12 @@
 			});
 		}
 	}
-	$('#seartoggle').click(toggleSearch);
+
+	//after fonts and images are loaded
+	$(window).load(function() {
+		stickyNav();
+		hideSearch();
+		$('#seartoggle').click(toggleSearch);
+	});
 
 })(jQuery);
