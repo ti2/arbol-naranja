@@ -17,7 +17,7 @@
 		$.ajax({
 			type: "POST",
 			url: "http://arbolnaranja.blog/wp-admin/admin-ajax.php",
-			data: { action: 'load_posts', offset: offset }
+			data: { action: 'load_posts', offset: offset, taxquery: $('#load-more').attr('data-taxquery') }
 		}).done(addPosts);
 	}
 
