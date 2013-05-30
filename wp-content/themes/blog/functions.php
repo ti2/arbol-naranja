@@ -114,3 +114,24 @@ function modify_youtube_embed_url($html, $url, $args) {
 	return str_replace("?feature=oembed", "?feature=oembed&wmode=opaque", $html);
 }
 add_filter('oembed_result', 'modify_youtube_embed_url', 10, 3);
+
+//
+function load_more_button() {
+	global $wp_query;
+	$total = $wp_query->found_posts;
+	$posts_per_page = get_option('posts_per_page');
+	if ($total > $posts_per_page) {
+		echo '<button id="load-more" data-offset="'.$posts_per_page.'" data-total="'.$total.'">Cargar más artículos</button>';
+	}
+}
+
+//AJAX
+add_action('wp_ajax_load_posts', 'load_posts_callback');
+add_action('wp_ajax_nopriv_load_posts', 'load_posts_callback');
+function load_posts_callback() {
+	$sticky = get_option( 'sticky_posts' );
+	$offset = $_POST['offset'];
+	query_posts(array( 'post__not_in' => $sticky, 'offset' => $offset ));
+	get_template_part('loop');
+	die(); // this is required to return a proper result
+}

@@ -17,6 +17,7 @@
 	<?php
 	wp_enqueue_script( 'packery', get_bloginfo('template_directory').'/js/packery.pkgd.min.js', array('jquery'), '1.0.5', true);
 	wp_enqueue_script( 'main', get_bloginfo('template_directory').'/js/main.js', array('jquery'), '', true);
+	wp_enqueue_script( 'ajax', get_bloginfo('template_directory').'/js/ajax.js', array('jquery'), '', true);
 	wp_head();
 	?>
 </head>

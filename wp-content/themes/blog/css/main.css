@@ -178,6 +178,16 @@ a {
     font-size: 45px;
 }
 
+#load-more {
+    background-color: #222;
+    border: none;
+    color: #ccc;
+    font-size: 32px;
+    margin: 25px 0;
+    padding: 6px;
+    width: 100%;
+}
+
 /* SINGLE */
 .main-post {
     margin: 0 auto;
