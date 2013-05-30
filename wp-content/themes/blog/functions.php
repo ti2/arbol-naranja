@@ -122,7 +122,7 @@ function load_more_button() {
 	$posts_per_page = get_option('posts_per_page');
 	$tax_query = serialize($wp_query->tax_query->queries);
 	if ($total > $posts_per_page) {
-		echo "<button id='load-more' data-offset='$posts_per_page' data-total='$total' data-taxquery='$tax_query'>Cargar más artículos</button>";
+		echo "<button id='load-more' data-total='$total' data-taxquery='$tax_query'>Cargar más artículos</button>";
 	}
 	//print_r($wp_query);
 }
@@ -131,9 +131,11 @@ function load_more_button() {
 add_action('wp_ajax_load_posts', 'load_posts_callback');
 add_action('wp_ajax_nopriv_load_posts', 'load_posts_callback');
 function load_posts_callback() {
-	$offset = $_POST['offset'];
+	$page = $_POST['page'];
 	$taxquery = unserialize( stripslashes($_POST['taxquery']) );
-	query_posts(array( 'offset' => $offset, 'tax_query' => $taxquery ));
+
+	query_posts(array( 'paged' => $page, 'tax_query' => $taxquery ));
 	get_template_part('loop');
+
 	die(); // this is required to return a proper result
 }
