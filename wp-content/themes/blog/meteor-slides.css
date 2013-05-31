@@ -133,16 +133,16 @@ ul.meteor-nav li {
 	z-index: 998;
 }
 .meteor-nav .prev a {
-	background: url('img/flecha1.png') no-repeat center center;
+	background: url('img/izq.png') no-repeat center center;
 }
 .meteor-nav .prev a:hover {
-	background: url('img/flecha1.png') no-repeat center center;
+	background: url('img/izq.png') no-repeat center center;
 }
 .meteor-nav .next a {
-	background: url('img/flecha2.png') no-repeat center center;
+	background: url('img/der.png') no-repeat center center;
 }
 .meteor-nav .next a:hover {
-	background: url('img/flecha2.png') no-repeat center center;
+	background: url('img/der.png') no-repeat center center;
 }
 }
 
