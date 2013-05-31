@@ -3,7 +3,7 @@
 
 		<?php
 		$contact_info = kc_get_option( 'nso', 'home_options', 'contact_info' );
-		echo apply_filters('the_content', $contact_info);
+		echo wpautop($contact_info);
 		?>
 
 		<?php wp_nav_menu( array('theme_location' => 'footer', 'container_class' => 'menu-footer' )); ?>
