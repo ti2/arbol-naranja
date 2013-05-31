@@ -13,7 +13,7 @@
 		}
 	}
 
-	var ajaxRequest = function ajaxRequest() {
+	var ajaxRequest = function() {
 		$.ajax({
 			type: "POST",
 			url: "http://arbolnaranja.blog/wp-admin/admin-ajax.php",
@@ -21,6 +21,22 @@
 		}).done(addPosts);
 	}
 
+	var addSingle = function(post) {
+		$('#main').html(post);
+	}
+
+	var requestPost = function(event) {
+		event.preventDefault();
+
+		var post_id = $(this).attr('id');
+		$.ajax({
+			type: "POST",
+			url: "http://arbolnaranja.blog/wp-admin/admin-ajax.php",
+			data: { action: 'get_single', id: post_id }
+		}).done(addSingle);
+	}
+
 	$('#load-more').click(ajaxRequest);
+	$('#article-list').on('click', '.post', requestPost);
 
 })(jQuery);

@@ -139,3 +139,16 @@ function load_posts_callback() {
 
 	die(); // this is required to return a proper result
 }
+
+add_action('wp_ajax_get_single', 'get_single_callback');
+add_action('wp_ajax_nopriv_get_single', 'get_single_callback');
+function get_single_callback() {
+	$post_id = $_POST['id'];
+	$id = substr($post_id, 5);
+
+	query_posts(array( 'p' => $id ));
+	get_template_part('loop', 'single');
+
+	die(); // this is required to return a proper result
+}
+
