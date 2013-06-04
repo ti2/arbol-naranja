@@ -10,6 +10,7 @@
 		<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 	</footer>
 
+</div>
 <?php wp_footer(); ?>
 </body>
 </html>

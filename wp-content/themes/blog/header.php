@@ -22,7 +22,7 @@
 	?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?>><div id="wrapper">
 	<header id="header" role="banner">
 		<h1 id="header-logo">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="ir logo"><?php bloginfo( 'name' ); ?></a>

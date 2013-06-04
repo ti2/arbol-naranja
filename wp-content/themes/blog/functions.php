@@ -1,5 +1,7 @@
 <?php
 function arbol_setup() {
+	add_theme_support( 'custom-background' );
+
 	add_theme_support( 'post-formats', array( 'image', 'video' ) );
 
 	add_theme_support( 'post-thumbnails' );

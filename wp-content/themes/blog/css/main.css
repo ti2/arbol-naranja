@@ -10,10 +10,14 @@
 }
 
 body {
-    background-color: #ededed;
     color: #4f4f4f;
     font-family: BebasNeueRegular, sans-serif;
     text-transform: uppercase;
+}
+#wrapper {
+    background-color: #ededed;
+    margin: 0 auto;
+    max-width: 1280px;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -25,11 +29,13 @@ a {
 
 /* HEADER */
 #header {
-    margin: 16px auto 0;
+    margin: 0 auto 63px;
+    padding: 16px 0 10px;
     width: 970px;
 }
 #header-logo {
     float: left;
+    line-height: 43px;
     margin: 0;
 }
 .logo {
@@ -66,8 +72,10 @@ a {
 
 #main-nav {
     clear: both;
+    left: 0;
     margin: 0 auto 8px;
-    position: relative;
+    position: absolute;
+    top: 69px;
     width: 100%;
     z-index: 99;
 }
@@ -251,7 +259,8 @@ a {
 
 /* FOOTER */
 #footer {
-    margin: 16px auto;
+    margin: 0 auto;
+    padding: 16px 0;
     text-align: center;
     width: 970px;
 }
