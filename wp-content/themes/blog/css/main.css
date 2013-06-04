@@ -15,7 +15,9 @@ body {
     font-family: BebasNeueRegular, sans-serif;
     text-transform: uppercase;
 }
-
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
 a {
     color: #e27923;
     text-decoration: none;
@@ -146,6 +148,7 @@ a {
     clear: both;
 }
 #article-list .post {
+    overflow: hidden;
     position: relative;
 }
 .size-pequeno {
@@ -163,13 +166,18 @@ a {
 #article-list .post img {
     vertical-align: top;
 }
+#article-list .post:hover img {
+    transform: scale(1.1);
+    transition: all 2s;
+}
 .title-over-img {
     bottom: 16px;
-    color: #fff;
+    color: #eee;
     font-size: 20px;
     left: 0;
     margin: 0 16px;
     position: absolute;
+    z-index: 1;
 }
 .size-grande .title-over-img {
     font-size: 27px;

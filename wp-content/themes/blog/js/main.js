@@ -28,8 +28,12 @@
 		var $images = $(this).find('img');
 		if ($images.length > 1) {
 			var $hidden_img = $images.filter('.hidden');
-			$hidden_img.removeClass('hidden');
-			$hidden_img.siblings('img').addClass('hidden');
+			var $visible_img = $hidden_img.siblings('img');
+			/*$hidden_img.removeClass('hidden');
+			$hidden_img.siblings('img').addClass('hidden');*/
+			var new_src = $hidden_img.attr('src');
+			$hidden_img.attr('src', $visible_img.attr('src'));
+			$visible_img.attr('src', new_src);
 		}
 	}
 	$('#article-list .post').hover(toggleImg, toggleImg);
