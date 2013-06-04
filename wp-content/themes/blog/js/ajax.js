@@ -34,6 +34,9 @@
 			url: "http://arbolnaranja.blog/wp-admin/admin-ajax.php",
 			data: { action: 'get_single', id: post_id }
 		}).done(addSingle);
+
+		var article_top = $('#main').offset().top - $('#main-nav').height();
+		$('html, body').animate({scrollTop: article_top}, 'slow');
 	}
 
 	$('#load-more').click(ajaxRequest);
