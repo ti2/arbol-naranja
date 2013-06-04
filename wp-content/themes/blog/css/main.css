@@ -202,6 +202,10 @@ a {
     text-align: center;
     width: 970px;
 }
+#post-media img {
+    max-width: 100%;
+    height: auto;
+}
 .post-video {
     width: 970px;
     height: 546px;

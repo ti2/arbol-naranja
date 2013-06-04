@@ -1,11 +1,15 @@
 <?php while ( have_posts() ) : the_post(); ?>
 	<article id="main-post-<?php the_ID(); ?>" <?php post_class('main-post'); ?>>
+		<div id="post-media">
 		<?php
 		if ( has_post_format( 'video' )) {
 			$video_url = get_post_meta( $post->ID, '_video_url', true );
 			echo wp_oembed_get($video_url, array('width'=>970, 'height'=>546));
+		} elseif ( has_post_format( 'image' )) {
+			the_post_thumbnail('large');
 		}
 		?>
+		</div>
 
 		<header>
 			<h1><?php the_title(); ?></h1>
