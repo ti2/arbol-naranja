@@ -1,43 +1,40 @@
 (function($) {
 	var addPosts = function(html) {
-		$posts = $(html).filter('article');
+		var $posts = $(html).filter('article');
 
 		if ($posts.length > 0) {
 			$('#article-list').append($posts).packery('appended', $posts.get());
-
-			updateOffset($posts.length);
 		}
 
-		toggleLoadButton(parseInt( $(html).filter('#total-posts').text() ));
+		var total = parseInt( $(html).filter('#total-posts').text() );
+		var toggle_load_button = ($posts.length < total) ? 'show' : 'hide';
+		toggleLoadButton(toggle_load_button);
 	}
 
-	var updateOffset = function(new_posts_total) {
-		var offset = parseInt( $('#load-more').attr('data-offset') );
-		var new_offset = offset + new_posts_total;
-		$('#load-more').attr('data-offset', new_offset);
-	}
-
-	var toggleLoadButton = function(total) {
-		//cuando se cambia de categoría, no se sabe cuanto es el total
-		if (total == -1) {
-			$('#load-more').removeClass('hidden').fadeIn();
-			return;
-		}
-
-		var loaded = $('#article-list .post').not('.hidden').length;
-		if ( loaded >= total ) {
+	var toggleLoadButton = function(toggle) {
+		if ( toggle == 'hide' ) {
 			$('#load-more').fadeOut().addClass('hidden');
 		} else {
 			$('#load-more').removeClass('hidden').fadeIn();
 		}
 	}
 
+	var getPostsIds = function() {
+		var ids = [];
+		$('#article-list .post').each(function( index ) {
+			var post_html_id = $(this).attr('id');
+			var post_id = post_html_id.substr(post_html_id.lastIndexOf('-')+1);
+			ids.push(post_id);
+		});
+		return ids;
+	}
+
 	var ajaxRequest = function() {
 		var req_data = {
 			action: 'load_posts',
-			offset : parseInt( $('#load-more').attr('data-offset') ),
 			term_id : $('#load-more').attr('data-queryterm'),
-			taxonomy : $('#load-more').attr('data-querytax')
+			taxonomy : $('#load-more').attr('data-querytax'),
+			exclude: getPostsIds()
 		};
 
 		$.ajax({
@@ -71,8 +68,7 @@
 		$('html, body').animate({scrollTop: offset}, 'slow');
 	}
 
-	var changeLoadButton = function(offset, term_id, taxonomy) {
-		$('#load-more').attr('data-offset', offset);
+	var changeLoadButton = function(term_id, taxonomy) {
 		$('#load-more').attr('data-queryterm', term_id);
 		$('#load-more').attr('data-querytax', taxonomy);
 	}
@@ -83,19 +79,18 @@
 		//get cat id
 		var link_classes = $(this).attr('class');
 		var cat_id = link_classes.substr(link_classes.lastIndexOf('-')+1);
-		console.log(cat_id);
 
 		$('#articles-title').text($(this).text());
 
 		var $posts_in_cat = $('#article-list .cat-'+cat_id);
 
-		changeLoadButton($posts_in_cat.length, cat_id, 'category');
+		changeLoadButton(cat_id, 'category');
 
 		//if there's at least one post in the category, show it
 		//if there's nothing, load more
 		if ($posts_in_cat.length > 0) {
 			packery_unignore( $posts_in_cat );
-			toggleLoadButton(-1);
+			toggleLoadButton('show');
 		} else {
 			ajaxRequest();
 		}

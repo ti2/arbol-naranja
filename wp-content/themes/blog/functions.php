@@ -147,14 +147,14 @@ function load_more_button() {
 		$classes = '';
 	}
 
-	echo "<button id='load-more' class='$classes' data-offset='$posts_per_page' data-querytax='$taxonomy' data-queryterm='$term_id'>Cargar más artículos</button>";
+	echo "<button id='load-more' class='$classes' data-querytax='$taxonomy' data-queryterm='$term_id'>Cargar más artículos</button>";
 }
 
 //AJAX
 add_action('wp_ajax_load_posts', 'load_posts_callback');
 add_action('wp_ajax_nopriv_load_posts', 'load_posts_callback');
 function load_posts_callback() {
-	$query_args = array('offset' => $_POST['offset']);
+	$query_args = array('post__not_in' => $_POST['exclude']);
 
 	if ($_POST['taxonomy']) {
 		$query_args['tax_query'] = array(
