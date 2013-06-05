@@ -1,3 +1,8 @@
+<?php
+global $wp_query;
+?>
+<span class="hidden" id="total-posts"><?php echo $wp_query->found_posts; ?></span>
+
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<?php

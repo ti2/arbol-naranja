@@ -132,21 +132,41 @@ function load_more_button() {
 	global $wp_query;
 	$total = $wp_query->found_posts;
 	$posts_per_page = get_option('posts_per_page');
-	$tax_query = serialize($wp_query->tax_query->queries);
-	if ($total > $posts_per_page) {
-		echo "<button id='load-more' data-total='$total' data-taxquery='$tax_query'>Cargar más artículos</button>";
+
+	$term = get_queried_object();
+	if ( ! $term ) {
+		$term_id = '';
+		$taxonomy = '';
+	} else {
+		$term_id = $term->term_id;
+		$taxonomy = $term->taxonomy;
 	}
-	//print_r($wp_query);
+
+	$classes = 'hidden';
+	if ($total > $posts_per_page) {
+		$classes = '';
+	}
+
+	echo "<button id='load-more' class='$classes' data-offset='$posts_per_page' data-querytax='$taxonomy' data-queryterm='$term_id'>Cargar más artículos</button>";
 }
 
 //AJAX
 add_action('wp_ajax_load_posts', 'load_posts_callback');
 add_action('wp_ajax_nopriv_load_posts', 'load_posts_callback');
 function load_posts_callback() {
-	$page = $_POST['page'];
-	$taxquery = unserialize( stripslashes($_POST['taxquery']) );
+	$query_args = array('offset' => $_POST['offset']);
 
-	query_posts(array( 'paged' => $page, 'tax_query' => $taxquery ));
+	if ($_POST['taxonomy']) {
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => $_POST['taxonomy'],
+				'field' => 'id',
+				'terms' => $_POST['term_id']
+			)
+		);
+	}
+
+	query_posts($query_args);
 	get_template_part('loop');
 
 	die(); // this is required to return a proper result

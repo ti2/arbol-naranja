@@ -11,7 +11,7 @@
 		if ($search_query) {
 			echo 'Resultados para: '.$search_query;
 		} elseif (is_archive()) {
-			single_cat_title();
+			single_term_title();
 		} else {
 			echo 'Últimos artículos';
 		}
