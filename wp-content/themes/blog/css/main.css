@@ -173,6 +173,7 @@ a {
 }
 #article-list .post img {
     vertical-align: top;
+    transition: all 2s;
 }
 #article-list .post:hover img {
     transform: scale(1.1);

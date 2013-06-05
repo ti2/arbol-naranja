@@ -7,7 +7,7 @@ global $wp_query;
 
 	<?php
 	$sizes = get_the_terms( $post->ID, 'size' );
-	if ($sizes == 'false') {
+	if ($sizes == false) {
 		$size_class = 'size-pequeno';
 	} else {
 		$first_size = reset($sizes);
