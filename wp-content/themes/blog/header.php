@@ -12,7 +12,7 @@
 	<link href="<?php bloginfo('template_directory'); ?>/css/normalize.css" rel="stylesheet" media="all">
 	<link href="<?php bloginfo('template_directory'); ?>/css/main.css" rel="stylesheet" media="all">
 
-	<!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
+	<!--[if lt IE 9]><script src="<?php bloginfo('template_directory'); ?>/js/html5shiv-printshiv.js" media="all"></script><![endif]-->
 
 	<?php
 	wp_enqueue_script( 'prefixfree', get_bloginfo('template_directory').'/js/prefixfree.min.js', array(), '1.0.7');
