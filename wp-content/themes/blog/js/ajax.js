@@ -39,7 +39,7 @@
 
 		$.ajax({
 			type: "POST",
-			url: "http://arbolnaranja.blog/wp-admin/admin-ajax.php",
+			url: ajax_url,
 			data: req_data
 		}).done(addPosts);
 	}
