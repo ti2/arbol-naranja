@@ -94,10 +94,10 @@
 		//if there's nothing, load more
 		if ($posts_in_cat.length > 0) {
 			packery_unignore( $posts_in_cat );
-			toggleLoadButton('show');
 		} else {
 			ajaxRequest();
 		}
+		toggleLoadButton('show');
 
 		//hide posts not in category
 		packery_ignore( $('#article-list .post').not('.cat-'+cat_id) );
