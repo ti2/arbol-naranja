@@ -62,7 +62,7 @@
 		if (position == 'top') {
 			var offset = $('#main').offset().top - $('#main-nav').height();
 		} else if (position == 'articles') {
-			var offset = $('#articles').offset().top
+			var offset = $('#articles').offset().top - $('#main-nav').height();
 		}
 
 		$('html, body').animate({scrollTop: offset}, 'slow');
