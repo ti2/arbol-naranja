@@ -21,6 +21,34 @@
 		}).done(addPosts);
 	}
 
+	//toca asi, porque estas funciones solo elementan elementos sencillos
+	var packery_ignore = function($elems) {
+		$elems.each(function( index ) {
+			$('#article-list').packery('ignore', $(this).get(0));
+		});
+		$elems.addClass('hidden');
+	}
+	var packery_unignore = function($elems) {
+		$elems.each(function( index ) {
+			$('#article-list').packery('unignore', $(this).get(0));
+		});
+		$elems.removeClass('hidden');
+	}
+
+	var filterCats = function(event) {
+		event.preventDefault();
+
+		var link_classes = $(this).attr('class');
+		var cat_id = link_classes.substr(link_classes.lastIndexOf('-')+1);
+		console.log(cat_id);
+
+		var $posts_in_cat = $('#article-list .cat-'+cat_id);
+
+		packery_unignore( $posts_in_cat );
+		packery_ignore( $('#article-list .post').not('.cat-'+cat_id) );
+		$('#article-list').packery('layout');
+	}
+
 	var addSingle = function(post) {
 		$('#main').html(post);
 	}
@@ -40,6 +68,7 @@
 	}
 
 	$('#load-more').click(ajaxRequest);
+	$('.cat-item').click(filterCats);
 	$('#article-list').on('click', '.post', requestPost);
 
 })(jQuery);

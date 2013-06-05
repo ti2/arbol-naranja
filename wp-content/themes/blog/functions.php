@@ -117,6 +117,16 @@ function modify_youtube_embed_url($html, $url, $args) {
 }
 add_filter('oembed_result', 'modify_youtube_embed_url', 10, 3);
 
+//agregar category ID al post class
+function category_id_class($classes) {
+	global $post;
+	foreach(get_the_category($post->ID) as $category) {
+		$classes[] = 'cat-'.$category->cat_ID;
+	}
+	return $classes;
+}
+add_filter('post_class', 'category_id_class');
+
 //
 function load_more_button() {
 	global $wp_query;
