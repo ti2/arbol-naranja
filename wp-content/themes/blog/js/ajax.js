@@ -6,6 +6,8 @@
 			$('#article-list').append($posts).packery('appended', $posts.get());
 		}
 
+		$('#load-more').text('Cargar más artículos');
+
 		var total = parseInt( $(html).filter('#total-posts').text() );
 		var toggle_load_button = ($posts.length < total) ? 'show' : 'hide';
 		toggleLoadButton(toggle_load_button);
@@ -36,6 +38,8 @@
 			taxonomy : $('#load-more').attr('data-querytax'),
 			exclude: getPostsIds()
 		};
+
+		$('#load-more').text('cargando...');
 
 		$.ajax({
 			type: "POST",
