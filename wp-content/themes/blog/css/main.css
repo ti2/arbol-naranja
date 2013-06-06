@@ -35,6 +35,7 @@ a {
 }
 #header-logo {
     float: left;
+    height: 43px;
     line-height: 43px;
     margin: 0;
 }
@@ -56,7 +57,6 @@ a {
 .menu-toggle {
     color: #999;
     font-size: 21px;
-    font-weight: normal;
     line-height: 43px;
     margin: 0;
     text-align: center;
@@ -118,7 +118,6 @@ a {
 #articles-title {
     float: left;
     font-size: 25px;
-    font-weight: normal;
     margin: 22px 0;
 }
 #articles-title:before {
@@ -156,6 +155,7 @@ a {
 #article-list {
     clear: both;
 }
+#article-list .gutter-sizer { width: 20px; }/*used by packery*/
 #article-list .post {
     overflow: hidden;
     position: relative;
@@ -224,10 +224,20 @@ a {
     max-width: 100%;
     height: auto;
 }
-.post-video {
+#post-media {
     width: 970px;
-    height: 546px;
-    text-align: left;
+    height: 0;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+#post-media iframe, #post-media object, #post-media embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 .main-post header {
     border-bottom: 2px solid #DDDDDD;
@@ -237,13 +247,11 @@ a {
     color: #888;
     font-size: 67px;
     font-style: italic;
-    font-weight: normal;
     margin-bottom: 0;
 }
 .main-post h3 {
     color: #e27923;
     font-size: 28px;
-    font-weight: normal;
     margin-top: 0;
 }
 .dd_buttons {
@@ -309,6 +317,110 @@ a {
 }
 .menu-footer li a {
     color: #444;
+}
+
+/* RESPONSIVE */
+@media only screen and (min-width: 533px) and (max-width: 999px) {
+    #header, #articles, .main-post, #footer {
+        width: 511px;
+    }
+    #company-web-link {
+        font-size: 16px;
+        width: 99px;
+    }
+    .menu-toggle {
+        font-size: 16px;
+    }
+    .menu-toggle:after {
+        border-width: 8px 4px 0;
+        margin: 0 6px 1px;
+    }
+
+    #main-nav li {
+        font-size: 21px;
+        margin: 10px 20px;
+    }
+
+    #articles-title {
+        font-size: 17px;
+        margin: 16px 0;
+    }
+    #articles-title:before {
+        border-width: 5px 0 5px 8px;
+        margin: 0 2px 1px 0;
+    }
+    #searchform {
+        margin: 12px 0 12px 12px;
+    }
+    .menu-social ul {
+        margin: 12px 0;
+    }
+
+    #article-list .gutter-sizer { width: 17px; }/*used by packery*/
+    .size-pequeno {
+        height: 115px;
+        width: 115px;
+    }
+    .size-grande {
+        height: 247px;
+        width: 247px;
+    }
+    .size-ancho {
+        height: 247px;
+        width: 511px;
+    }
+    .title-over-img {
+        bottom: 10px;
+        font-size: 17px;
+    }
+    .size-grande .title-over-img {
+        font-size: 22px;
+    }
+    .size-ancho .title-over-img {
+        font-size: 38px;
+    }
+
+    #load-more {
+        font-size: 21px;
+        margin: 20px 0;
+    }
+    #load-more:before, #load-more:after {
+        border-width: 9px 5px 0;
+    }
+
+    #post-media {
+        width: 511px;
+    }
+    .main-post header {
+        margin: 0;
+    }
+    .main-post h1 {
+        font-size: 48px;
+    }
+    .main-post h3 {
+        font-size: 21px;
+    }
+    .post-content {
+        font: 18px Garamond, "Times New Roman", Times, serif;
+        margin: 20px 0 40px;
+        padding: 0;
+    }
+    .post-content h4 {
+        font-size: 21px;
+    }
+
+    #footer p {
+        margin-bottom:21px;
+        font-size: bold 12px;
+    }
+
+    .menu-footer li {
+        font-size: 17px;
+    }
+    .menu-footer li:before {
+        border-width: 4px 0 4px 8px;
+        margin: 0 4px 2px 0;
+    }
 }
 
 /* ==========================================================================

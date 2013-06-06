@@ -2,6 +2,7 @@
 global $wp_query;
 ?>
 <span class="hidden" id="total-posts"><?php echo $wp_query->found_posts; ?></span>
+<span class="gutter-sizer"></span>
 
 <?php while ( have_posts() ) : the_post(); ?>
 

@@ -4,7 +4,7 @@
 	// initialize
 	$container.packery({
 		itemSelector: 'article',
-		gutter: 20
+		gutter: '.gutter-sizer'
 	});
 
 	/* STICKY TOP MENU */
