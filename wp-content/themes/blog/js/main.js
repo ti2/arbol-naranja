@@ -96,8 +96,8 @@
 	}
 
 	var window_width = $(window).width();
-	resetMenu();
 	stickyNav();
+	resetMenu();
 
 	$(window).resize(adjustMenu);
 	$('.menu-toggle').click(toggleMenu);
