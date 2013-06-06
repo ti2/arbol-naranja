@@ -12,11 +12,10 @@
 	{
 		var $nav = $('#main-nav');
 		var offset = $nav.offset().top;
-		$nav.hide();
 
 		$(window).scroll(function () {
 			//display menu on first scroll
-			if ($(this).scrollTop() > 0 && $('#main-nav').is(':hidden')) {
+			if ($(this).scrollTop() > 0 && $nav.is(':hidden') && window_width > 532) {
 				$('#main-nav').slideDown();
 			}
 
@@ -68,14 +67,48 @@
 	/* MENU TOGGLE */
 	var toggleMenu = function()
 	{
-		$('#main-nav').slideToggle();
+		if (window_width > 532) {
+			$('#main-nav').slideToggle();
+		} else {
+			$('#main-nav').toggleClass('left');
+		}
 	}
+
+	var resetMenu = function()
+	{
+		var $nav = $('#main-nav');
+
+		if (window_width > 532) {
+			$nav.hide();
+			$nav.removeClass('left');
+		} else {
+			$nav.addClass('left');
+			$nav.show();
+		}
+	}
+
+	var adjustMenu = function()
+	{
+		window_width = $(window).width();
+		if ( $('#main-nav').hasClass('left') || $('#main-nav').is(':hidden') ) {
+			resetMenu();
+		}
+	}
+
+	var window_width = $(window).width();
+	resetMenu();
+	stickyNav();
+
+	$(window).resize(adjustMenu);
+	$('.menu-toggle').click(toggleMenu);
+	$('#main-nav a').click(function() {
+		if (window_width <= 532) {
+			toggleMenu();
+		}
+	});
 
 	//after fonts and images are loaded
 	$(window).load(function() {
-		stickyNav();
-		$('.menu-toggle').click(toggleMenu);
-
 		hideSearch();
 		$('#seartoggle').click(toggleSearch);
 	});

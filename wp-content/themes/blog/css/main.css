@@ -432,6 +432,51 @@ a {
         display: none;
     }
 
+    #header-logo {
+        float: right;
+        margin-right: 40px;
+    }
+    .menu-toggle {
+        background-image: url(../img/iphone-menu.png);
+        height: 46px;
+        overflow: hidden;
+        width: 45px;
+        /* IE 6/7 fallback */
+        *text-indent: -9999px;
+    }
+    .menu-toggle:before {
+        content: "";
+        display: block;
+        height: 150%;
+        width: 0;
+    }
+    .menu-toggle:after {
+        margin: 0;
+    }
+
+    #main-nav {
+        height: 100%;
+        left: 0;
+        margin: 0;
+        width: 67%;
+        transition: all 0.5s;
+    }
+    #main-nav.fixed-nav {
+        position: absolute;
+        top: 69px;
+    }
+    #main-nav.left {
+        left: -67%;
+    }
+    #main-nav ul {
+        height: 100%;
+        padding: 10%;
+        text-align: left;
+    }
+    #main-nav li {
+        display: block;
+    }
+
     #article-list {
         margin: 0 auto;
         width: 300px;
