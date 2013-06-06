@@ -56,6 +56,7 @@
 		if ($('#searchfields').width() == 0) {
 			$('#searchfields').show().animate({width: search_width}, function() {
 				$(this).width('');
+				$('#s').focus();
 			});
 		} else {
 			$('#searchfields').animate({width: 0}, function() {
