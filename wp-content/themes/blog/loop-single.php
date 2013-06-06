@@ -4,7 +4,9 @@
 		<?php
 		if ( has_post_format( 'video' )) {
 			$video_url = get_post_meta( $post->ID, '_video_url', true );
+			echo '<div id="video-wrapper">';
 			echo wp_oembed_get($video_url, array('width'=>970, 'height'=>546));
+			echo '</div>';
 		} elseif ( has_post_format( 'image' )) {
 			the_post_thumbnail('large');
 		}

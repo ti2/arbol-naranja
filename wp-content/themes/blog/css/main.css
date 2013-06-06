@@ -173,6 +173,7 @@ a {
     width: 640px;
 }
 #article-list .post img {
+    max-width: 100%;
     vertical-align: top;
     transition: all 2s;
 }
@@ -220,24 +221,26 @@ a {
     text-align: center;
     width: 970px;
 }
-#post-media img {
-    max-width: 100%;
-    height: auto;
-}
 #post-media {
     width: 970px;
+}
+#post-media img {
+    height: auto;
+    max-width: 100%;
+}
+#video-wrapper {
     height: 0;
+    overflow: hidden;
     padding-bottom: 56.25%;
     padding-top: 30px;
     position: relative;
-    overflow: hidden;
 }
-#post-media iframe, #post-media object, #post-media embed {
+#video-wrapper iframe, #video-wrapper object, #video-wrapper embed {
+    height: 100%;
+    left: 0;
     position: absolute;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
 }
 .main-post header {
     border-bottom: 2px solid #DDDDDD;
@@ -320,8 +323,8 @@ a {
 }
 
 /* RESPONSIVE */
-@media only screen and (min-width: 533px) and (max-width: 999px) {
-    #header, #articles, .main-post, #footer {
+@media only screen and (max-width: 999px) {
+    #header, #articles, .main-post, #post-media, #footer {
         width: 511px;
     }
     #company-web-link {
@@ -388,9 +391,6 @@ a {
         border-width: 9px 5px 0;
     }
 
-    #post-media {
-        width: 511px;
-    }
     .main-post header {
         margin: 0;
     }
@@ -410,8 +410,8 @@ a {
     }
 
     #footer p {
-        margin-bottom:21px;
-        font-size: bold 12px;
+        font-size: 12px;
+        margin-bottom: 21px;
     }
 
     .menu-footer li {
@@ -420,6 +420,61 @@ a {
     .menu-footer li:before {
         border-width: 4px 0 4px 8px;
         margin: 0 4px 2px 0;
+    }
+}
+
+@media only screen and (max-width: 532px) {
+    #header, #articles, .main-post, #post-media, #footer {
+        width: 320px;
+    }
+    #company-web-link, #meteor-slideshow, #searchform, .menu-social {
+        display: none;
+    }
+
+    #article-list {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    #article-list .gutter-sizer { width: 10px; }/*used by packery*/
+    .size-pequeno {
+        height: 145px;
+        width: 145px;
+    }
+    .size-grande {
+        height: 300px;
+        width: 300px;
+    }
+    .size-ancho {
+        height: 145px;
+        width: 300px;
+    }
+    .title-over-img {
+        font-size: 18px;
+    }
+    .size-grande .title-over-img {
+        font-size: 27px;
+    }
+    .size-ancho .title-over-img {
+        font-size: 36px;
+    }
+
+    #load-more {
+        font-size: 18px;
+        margin: 20px 10px;
+        width: 300px;
+    }
+
+    #footer p {
+        font-size: 10px;
+        margin-bottom: 18px;
+    }
+
+    .menu-footer li {
+        font-size: 12px;
+    }
+    .menu-footer li:before {
+        margin: 0 2px 1px 0;
     }
 }
 
