@@ -9,7 +9,7 @@ function remove_width_attribute( $html ) {
 global $wp_query;
 ?>
 <span class="hidden" id="total-posts"><?php echo $wp_query->found_posts; ?></span>
-<span class="gutter-sizer"></span>
+<div class="gutter-sizer"></div>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
