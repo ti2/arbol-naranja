@@ -56,6 +56,7 @@ a {
 
 .menu-toggle {
     color: #999;
+    cursor: pointer;
     font-size: 21px;
     line-height: 43px;
     margin: 0;

@@ -12,14 +12,20 @@
 	{
 		var $nav = $('#main-nav');
 		var offset = $nav.offset().top;
+		$nav.hide();
 
 		$(window).scroll(function () {
-	        if ($(this).scrollTop() > offset) {
-	            $nav.addClass("fixed-nav");
-	        } else {
-	            $nav.removeClass("fixed-nav");
-	        }
-	    });
+			//display menu on first scroll
+			if ($(this).scrollTop() > 0 && $('#main-nav').is(':hidden')) {
+				$('#main-nav').slideDown();
+			}
+
+			if ($(this).scrollTop() > offset) {
+				$nav.addClass("fixed-nav");
+			} else {
+				$nav.removeClass("fixed-nav");
+			}
+		});
 	}
 
 	/* THUMB IMG HOVER */
@@ -46,7 +52,7 @@
 		$('#searchfields').hide().width(0);
 	}
 
-	var toggleSearch = function ()
+	var toggleSearch = function()
 	{
 		if ($('#searchfields').width() == 0) {
 			$('#searchfields').show().animate({width: search_width}, function() {
@@ -59,9 +65,17 @@
 		}
 	}
 
+	/* MENU TOGGLE */
+	var toggleMenu = function()
+	{
+		$('#main-nav').slideToggle();
+	}
+
 	//after fonts and images are loaded
 	$(window).load(function() {
 		stickyNav();
+		$('.menu-toggle').click(toggleMenu);
+
 		hideSearch();
 		$('#seartoggle').click(toggleSearch);
 	});
