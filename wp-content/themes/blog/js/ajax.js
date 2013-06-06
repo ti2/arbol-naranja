@@ -116,7 +116,7 @@
 		var post_id = $(this).attr('id');
 		$.ajax({
 			type: "POST",
-			url: "http://arbolnaranja.blog/wp-admin/admin-ajax.php",
+			url: ajax_url,
 			data: { action: 'get_single', id: post_id }
 		}).done(addSingle);
 
