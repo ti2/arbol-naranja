@@ -8,7 +8,7 @@
 	<h1 id="articles-title">Últimos artículos</h1>
 
 	<?php get_search_form(); ?>
-	<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
+	<?php //wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
 	<div id="article-list">
 		<?php query_posts(''); ?>

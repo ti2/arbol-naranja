@@ -19,7 +19,7 @@
 	</h1>
 
 	<?php get_search_form(); ?>
-	<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
+	<?php //wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
 
 	<?php if ( have_posts() ) : ?>

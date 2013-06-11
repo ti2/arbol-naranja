@@ -94,9 +94,9 @@ a {
 }
 #main-nav li {
     display: inline-block;
-    font-size: 25px;
+    font-size: 23px;
     list-style: none;
-    margin: 12px 22px;
+    margin: 10px 22px;
 }
 #main-nav li a {
     color: #b3b3b3;
@@ -141,6 +141,7 @@ a {
 }
 #s {
     border: none;
+    padding: 1px 4px;
 }
 
 #articles .menu-social {
@@ -182,7 +183,7 @@ a {
     transition: all 2s;
 }
 #article-list .post:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 2s;
 }
 .title-over-img {
@@ -281,6 +282,10 @@ a {
 .post-content h4 {
     font-size: 25px;
 }
+.post-content img {
+    height: auto;
+    max-width: 100%;
+}
 
 /* FOOTER */
 #footer {
@@ -344,8 +349,8 @@ a {
     }
 
     #main-nav li {
-        font-size: 21px;
-        margin: 10px 20px;
+        font-size: 20px;
+        margin: 8px 20px;
     }
 
     #articles-title {
