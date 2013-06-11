@@ -17,6 +17,12 @@ function arbol_setup() {
 				'id' => 'secondary-image'
 			)
 		);
+		new MultiPostThumbnails(
+			array(
+				'label' => 'Imagen Grande',
+				'id' => 'static-image'
+			)
+		);
 	}
 
 	register_nav_menus( array(

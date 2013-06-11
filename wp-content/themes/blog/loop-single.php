@@ -8,7 +8,11 @@
 			echo wp_oembed_get($video_url, array('width'=>970, 'height'=>546));
 			echo '</div>';
 		} elseif ( has_post_format( 'image' )) {
-			the_post_thumbnail('large');
+			$large_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'large');
+			$mobile_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'mobile-first');
+			echo '<span data-fullsrc="'.$large_img.'" data-src="'.$mobile_img.'" class="responsivize">';
+			echo '<noscript><img src="'.$mobile_img.'" /></noscript>';
+			echo '</span>';
 		}
 		?>
 		</div>
