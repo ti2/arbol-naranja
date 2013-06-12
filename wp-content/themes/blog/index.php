@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main id="main" role="main">
-	<?php if ( function_exists( 'meteor_slideshow' ) ) { meteor_slideshow(); } ?>
+	<?php putRevSlider('slider1') ?>
 </main>
 
 <div id="articles">

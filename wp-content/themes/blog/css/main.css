@@ -78,7 +78,7 @@ a {
     position: absolute;
     top: 69px;
     width: 100%;
-    z-index: 99;
+    z-index: 999;
 }
 #main-nav.fixed-nav {
     left: 0;
@@ -107,7 +107,7 @@ a {
     clear: both;
 }
 
-#meteor-slideshow {
+.rev_slider_wrapper {
     margin: 0 auto 32px;
 }
 
@@ -436,7 +436,7 @@ a {
     #header, #articles, .main-post, #post-media, #footer {
         width: 320px;
     }
-    #company-web-link, #meteor-slideshow, #searchform, .menu-social {
+    #company-web-link, .rev_slider_wrapper, #searchform, .menu-social {
         display: none;
     }
 
