@@ -172,6 +172,11 @@ function load_posts_callback() {
 		);
 	}
 
+	if ($_POST['search']) {
+		$query_args['s'] = $_POST['search'];
+		$query_args['post_type'] = 'post';
+	}
+
 	query_posts($query_args);
 	get_template_part('loop');
 

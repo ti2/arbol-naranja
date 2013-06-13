@@ -33,21 +33,45 @@
 		return ids;
 	}
 
-	var ajaxRequest = function() {
-		var req_data = {
-			action: 'load_posts',
-			term_id : $('#load-more').attr('data-queryterm'),
-			taxonomy : $('#load-more').attr('data-querytax'),
-			exclude: getPostsIds()
-		};
-
+	var ajaxRequest = function(req_data) {
+		toggleLoadButton('show');
 		$('#load-more').text('cargando...');
+		$('.articles-msg').fadeOut();
 
 		$.ajax({
 			type: "POST",
 			url: ajax_url,
 			data: req_data
 		}).done(addPosts);
+	}
+
+	var loadMore= function() {
+		var req_data = {
+			action: 'load_posts',
+			term_id: $('#load-more').attr('data-queryterm'),
+			taxonomy: $('#load-more').attr('data-querytax'),
+			exclude: getPostsIds()
+		};
+
+		ajaxRequest(req_data);
+	}
+
+	var doSearch = function(event) {
+		event.preventDefault();
+
+		var req_data = {
+			action: 'load_posts',
+			search: $('#s').val()
+		};
+
+		//remove all elements before search
+		$('#article-list').packery('remove', $('#article-list .post').get());
+		$('#article-list .post').remove();
+		$('#article-list').packery('layout');
+
+		$('#articles-title').text('Resultados para: '+$('#s').val());
+
+		ajaxRequest(req_data);
 	}
 
 	//toca asi, porque estas funciones solo elementan elementos sencillos
@@ -97,7 +121,7 @@
 		if ($posts_in_cat.length > 0) {
 			packery_unignore( $posts_in_cat );
 		} else {
-			ajaxRequest();
+			loadMore();
 		}
 		toggleLoadButton('show');
 
@@ -142,7 +166,8 @@
 		});
 	}
 
-	$('#load-more').click(ajaxRequest);
+	$('#load-more').click(loadMore);
+	$('#searchform').submit(doSearch);
 	$('.cat-item').click(filterCats);
 	$('#article-list').on('click', '.post', requestPost);
 	loadLargeImgs();

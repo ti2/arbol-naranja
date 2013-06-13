@@ -22,17 +22,18 @@
 	<?php //wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
 
-	<?php if ( have_posts() ) : ?>
+	<div id="article-list">
+		<?php if ( have_posts() ) : ?>
 
-		<div id="article-list">
 			<?php get_template_part('loop'); ?>
-		</div>
 
-		<?php load_more_button(); ?>
+		<?php else : ?>
+			<div class="gutter-sizer"></div>
+			<p class="articles-msg">Su busqueda no ha arrojado resultados</p>
+		<?php endif; ?>
+	</div>
 
-	<?php else : ?>
-		<?php echo '<p>Su busqueda no ha arrojado resultados</p>'; ?>
-	<?php endif; ?>
+	<?php load_more_button(); ?>
 </div>
 
 <?php get_footer(); ?>

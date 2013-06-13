@@ -108,7 +108,7 @@ a {
 }
 
 .rev_slider_wrapper {
-    margin: 0 auto 32px;
+    margin: 0 auto 32px !important;
 }
 
 #articles {
