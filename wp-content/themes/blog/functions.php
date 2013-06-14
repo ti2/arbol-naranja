@@ -162,7 +162,7 @@ add_action('wp_ajax_nopriv_load_posts', 'load_posts_callback');
 function load_posts_callback() {
 	$query_args = array('post__not_in' => $_POST['exclude']);
 
-	if ($_POST['taxonomy']) {
+	if ($_POST['term_id']) {
 		$query_args['tax_query'] = array(
 			array(
 				'taxonomy' => $_POST['taxonomy'],

@@ -56,12 +56,11 @@
 		ajaxRequest(req_data);
 	}
 
-	var doSearch = function(event) {
-		event.preventDefault();
+	var doSearch = function(keywords) {
 
 		var req_data = {
 			action: 'load_posts',
-			search: $('#s').val()
+			search: keywords
 		};
 
 		//remove all elements before search
@@ -69,9 +68,20 @@
 		$('#article-list .post').remove();
 		$('#article-list').packery('layout');
 
-		$('#articles-title').text('Resultados para: '+$('#s').val());
+		$('#articles-title').text('Resultados para: '+keywords);
 
 		ajaxRequest(req_data);
+	}
+
+	var searchSubmit = function(event) {
+		event.preventDefault();
+
+		var keywords = $('#s').val();
+
+		var url = $(this).attr('action')+'?s='+keywords;
+		history.pushState( {search: keywords, page: 'search'}, null, url );
+
+		doSearch(keywords);
 	}
 
 	//toca asi, porque estas funciones solo elementan elementos sencillos
@@ -103,17 +113,13 @@
 		$('#load-more').attr('data-querytax', taxonomy);
 	}
 
-	var filterCats = function(event) {
-		event.preventDefault();
-
-		//get cat id
-		var link_classes = $(this).attr('class');
-		var cat_id = link_classes.substr(link_classes.lastIndexOf('-')+1);
-
-		$('#articles-title').text($(this).text());
-
-		var $posts_in_cat = $('#article-list .cat-'+cat_id);
-
+	var filterCats = function(cat_id, cat_title) {
+		if (cat_id == '') {
+			var $posts_in_cat = $('#article-list .post');
+		} else {
+			var $posts_in_cat = $('#article-list .cat-'+cat_id);
+		}
+		$('#articles-title').text(cat_title);
 		changeLoadButton(cat_id, 'category');
 
 		//if there's at least one post in the category, show it
@@ -126,10 +132,25 @@
 		toggleLoadButton('show');
 
 		//hide posts not in category
-		packery_ignore( $('#article-list .post').not('.cat-'+cat_id) );
+		if (cat_id != '') {
+			packery_ignore( $('#article-list .post').not('.cat-'+cat_id) );
+		}
 		$('#article-list').packery('layout');
 
 		scrollPage('articles');
+	}
+
+	var changeCat = function(event) {
+		event.preventDefault();
+
+		//get cat id
+		var link_classes = $(this).attr('class');
+		var cat_id = link_classes.substr(link_classes.lastIndexOf('-')+1);
+		var cat_title = $.trim( $(this).text() );
+
+		history.pushState( {cat_id: cat_id, cat_title: cat_title, page: 'cat'}, null, $(this).children('a').attr('href') );
+
+		filterCats(cat_id, cat_title);
 	}
 
 	var addSingle = function(post) {
@@ -137,10 +158,7 @@
 		loadLargeImgs();
 	}
 
-	var requestPost = function(event) {
-		event.preventDefault();
-
-		var post_id = $(this).attr('id');
+	var ajaxPost = function(post_id) {
 		$.ajax({
 			type: "POST",
 			url: ajax_url,
@@ -148,6 +166,50 @@
 		}).done(addSingle);
 
 		scrollPage('top');
+	}
+
+	var requestPost = function(event) {
+		event.preventDefault();
+
+		var post_id = $(this).attr('id');
+
+		history.pushState( {post_id: post_id, page: 'post'}, null, $(this).children('a').attr('href') );
+
+		ajaxPost(post_id);
+	}
+
+	var addHistory = function() {
+		var loc = window.location;
+
+		if ($('body').hasClass('home')) {
+			history.replaceState( {page: 'home'}, null, loc.href );
+		} else if ($('body').hasClass('category')) {
+			var cat_id = $('#initial-cat').text();
+			var cat_title = $.trim( $('#articles-title').text() );
+			history.replaceState( {cat_id: cat_id, cat_title: cat_title, page: 'cat'}, null, loc.href );
+		} else if ($('body').hasClass('single')) {
+			var html_id = $('#main article').attr('id');
+			var post_id = html_id.substr(10);
+			history.replaceState( {post_id: post_id, page: 'post'}, null, loc.href );
+		} else if ($('body').hasClass('search')) {
+			var keywords = loc.search.substr(3);
+			history.replaceState( {search: keywords, page: 'search'}, null, loc.href );
+		}
+	}
+
+	var popState = function(event) {
+		var loc = history.location || document.location;
+		var state = event.originalEvent.state;
+
+		if (state.page == 'post') {
+			ajaxPost(state.post_id);
+		} else if (state.page == 'cat') {
+			filterCats(state.cat_id, state.cat_title);
+		} else if (state.page == 'search') {
+			doSearch(state.search);
+		} else if (state.page == 'home') {
+			filterCats('', 'Últimos artículos');
+		}
 	}
 
 	//RESPONSIVE
@@ -167,9 +229,11 @@
 	}
 
 	$('#load-more').click(loadMore);
-	$('#searchform').submit(doSearch);
-	$('.cat-item').click(filterCats);
+	$('#searchform').submit(searchSubmit);
+	$('.cat-item').click(changeCat);
 	$('#article-list').on('click', '.post', requestPost);
+	addHistory();
+	$(window).on('popstate', popState);
 	loadLargeImgs();
 
 })(jQuery);
