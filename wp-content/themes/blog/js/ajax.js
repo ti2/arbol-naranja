@@ -61,7 +61,8 @@
 		if (prefix) {
 			title = prefix + ' | ' + title;
 		}
-		$('title').text(title);
+		//$('title').text(title);
+		document.title = title;
 	}
 
 	var doSearch = function(keywords) {
