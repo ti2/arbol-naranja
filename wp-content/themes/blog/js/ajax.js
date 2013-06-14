@@ -56,6 +56,14 @@
 		ajaxRequest(req_data);
 	}
 
+	var changeTitle = function(prefix) {
+		var title = 'Árbol Naranja';
+		if (prefix) {
+			title = prefix + ' | ' + title;
+		}
+		$('title').text(title);
+	}
+
 	var doSearch = function(keywords) {
 
 		var req_data = {
@@ -71,6 +79,8 @@
 		$('#articles-title').text('Resultados para: '+keywords);
 
 		ajaxRequest(req_data);
+
+		changeTitle(keywords+' | Resultados de la búsqueda');
 	}
 
 	var searchSubmit = function(event) {
@@ -116,8 +126,10 @@
 	var filterCats = function(cat_id, cat_title) {
 		if (cat_id == '') {
 			var $posts_in_cat = $('#article-list .post');
+			changeTitle('');
 		} else {
 			var $posts_in_cat = $('#article-list .cat-'+cat_id);
+			changeTitle(cat_title);
 		}
 		$('#articles-title').text(cat_title);
 		changeLoadButton(cat_id, 'category');
@@ -158,7 +170,7 @@
 		loadLargeImgs();
 	}
 
-	var ajaxPost = function(post_id) {
+	var ajaxPost = function(post_id, title) {
 		$.ajax({
 			type: "POST",
 			url: ajax_url,
@@ -166,16 +178,19 @@
 		}).done(addSingle);
 
 		scrollPage('top');
+
+		changeTitle(title);
 	}
 
 	var requestPost = function(event) {
 		event.preventDefault();
 
 		var post_id = $(this).attr('id');
+		var post_title = $(this).find('.title-over-img').text();
 
-		history.pushState( {post_id: post_id, page: 'post'}, null, $(this).children('a').attr('href') );
+		history.pushState( {post_id: post_id, post_title: post_title, page: 'post'}, null, $(this).children('a').attr('href') );
 
-		ajaxPost(post_id);
+		ajaxPost(post_id, post_title);
 	}
 
 	var addHistory = function() {
@@ -189,8 +204,9 @@
 			history.replaceState( {cat_id: cat_id, cat_title: cat_title, page: 'cat'}, null, loc.href );
 		} else if ($('body').hasClass('single')) {
 			var html_id = $('#main article').attr('id');
-			var post_id = html_id.substr(10);
-			history.replaceState( {post_id: post_id, page: 'post'}, null, loc.href );
+			var post_id = html_id.substr(5);
+			var post_title = $('#main article header h1').text();
+			history.replaceState( {post_id: post_id, post_title: post_title, page: 'post'}, null, loc.href );
 		} else if ($('body').hasClass('search')) {
 			var keywords = loc.search.substr(3);
 			history.replaceState( {search: keywords, page: 'search'}, null, loc.href );
@@ -202,7 +218,7 @@
 		var state = event.originalEvent.state;
 
 		if (state.page == 'post') {
-			ajaxPost(state.post_id);
+			ajaxPost(state.post_id, state.post_title);
 		} else if (state.page == 'cat') {
 			filterCats(state.cat_id, state.cat_title);
 		} else if (state.page == 'search') {
