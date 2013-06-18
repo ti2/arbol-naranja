@@ -295,17 +295,20 @@ a {
     width: 970px;
 }
 
-#footer h1 {
+#footer-logos{
     margin: 0 auto;
 }
-.big-logo {
-    background-image: url(../img/webfooter.png);
+#footer-logos a {
+    margin: 0 36px;
+}
+.footer-logo {
+    background-image: url(../img/arbollogo.png);
     display: inline-block;
-    height: 208px;
-    width: 222px;
+    height: 86px;
+    width: 185px;
 }
 #footer p {
-    margin: 0 auto 28px;
+    margin: 28px auto;
     font: bold 14px calibri, sans-serif;
 }
 
@@ -317,7 +320,7 @@ a {
     display: inline-block;
     font-size: 22px;
     list-style: none;
-    margin: 0 5px;
+    margin: 0 15px;
 }
 .menu-footer li:before {
     border-color: transparent #444;
@@ -329,6 +332,14 @@ a {
 }
 .menu-footer li a {
     color: #444;
+}
+
+.fb-like {
+    vertical-align: middle;
+}
+#footer .menu-social {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* RESPONSIVE */
@@ -418,9 +429,12 @@ a {
         font-size: 21px;
     }
 
+    #footer-logos a {
+        margin: 0 2px;
+    }
     #footer p {
         font-size: 12px;
-        margin-bottom: 21px;
+        margin: 21px auto;
     }
 
     .menu-footer li {
@@ -523,9 +537,12 @@ a {
         margin-top: 0;
     }
 
+    #footer-logos a {
+        margin: 0 36px;
+    }
     #footer p {
         font-size: 10px;
-        margin-bottom: 18px;
+        margin: 18px auto;
     }
 
     .menu-footer li {
