@@ -299,11 +299,11 @@ a {
     margin: 0 auto;
 }
 #footer-logos a {
+    display: inline-block;
     margin: 0 36px;
 }
 .footer-logo {
     background-image: url(../img/arbollogo.png);
-    display: inline-block;
     height: 86px;
     width: 185px;
 }
@@ -499,6 +499,9 @@ a {
         display: block;
     }
 
+    #articles-title {
+        margin: 16px 10px;
+    }
     #article-list {
         margin: 0 auto;
         width: 300px;
@@ -535,6 +538,9 @@ a {
 
     .main-post {
         margin-top: 0;
+    }
+    .post-content {
+        margin: 20px 10px 40px;
     }
 
     #footer-logos a {

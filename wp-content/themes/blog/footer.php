@@ -22,7 +22,7 @@
 <script>(function(d, s) {
   if (window.innerWidth < 533) {
   	var like_button = d.getElementById('footer-like');
-  	like_button.setAttribute('data-width', '300');
+  	like_button.setAttribute('data-width', '310');
   }
 
   var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
