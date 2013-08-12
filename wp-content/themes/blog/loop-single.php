@@ -1,4 +1,15 @@
 <?php while ( have_posts() ) : the_post(); ?>
+	<?php
+	if ( has_post_format( 'image' )) {
+		$large_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'huge');
+		$mobile_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'mobile-first');
+		echo '<div class="full-image">';
+		echo '<span data-fullsrc="'.$large_img.'" data-src="'.$mobile_img.'" class="responsivize">';
+		echo '<noscript><img src="'.$mobile_img.'" /></noscript>';
+		echo '</span></div>';
+	}
+	?>
+
 	<article id="main-post-<?php the_ID(); ?>" <?php post_class('main-post'); ?>>
 		<div id="post-media">
 		<?php
@@ -7,12 +18,6 @@
 			echo '<div id="video-wrapper">';
 			echo wp_oembed_get($video_url, array('width'=>970, 'height'=>546));
 			echo '</div>';
-		} elseif ( has_post_format( 'image' )) {
-			$large_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'large');
-			$mobile_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'mobile-first');
-			echo '<span data-fullsrc="'.$large_img.'" data-src="'.$mobile_img.'" class="responsivize">';
-			echo '<noscript><img src="'.$mobile_img.'" /></noscript>';
-			echo '</span>';
 		}
 		?>
 		</div>

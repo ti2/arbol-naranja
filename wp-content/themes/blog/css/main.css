@@ -221,6 +221,13 @@ a {
 }
 
 /* SINGLE */
+.full-image {
+    text-align: center;
+}
+.full-image img {
+    height: auto;
+    width: 100%;
+}
 .main-post {
     margin: 63px auto 32px;
     text-align: center;
