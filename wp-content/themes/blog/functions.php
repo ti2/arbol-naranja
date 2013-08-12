@@ -9,7 +9,7 @@ function arbol_setup() {
 	set_post_thumbnail_size( 145, 145, true );
 	add_image_size( 'wide-thumb', 640, 310, true );
 	add_image_size( 'big-thumb', 310, 310, true );
-	add_image_size( 'huge', 1280, 480, true );
+	add_image_size( 'huge', 1280, 960 );
 
 	if (class_exists('MultiPostThumbnails')) {
 		new MultiPostThumbnails(
@@ -202,4 +202,3 @@ function get_single_callback() {
 
 	die(); // this is required to return a proper result
 }
-
