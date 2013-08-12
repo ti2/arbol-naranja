@@ -7,6 +7,9 @@
 		echo '<span data-fullsrc="'.$large_img.'" data-src="'.$mobile_img.'" class="responsivize">';
 		echo '<noscript><img src="'.$mobile_img.'" /></noscript>';
 		echo '</span></div>';
+	} elseif ( has_post_format('gallery') ) {
+		$slider_alias = get_post_meta( $post->ID, '_slider_alias', true );
+		echo do_shortcode('[rev_slider '.$slider_alias.']');
 	}
 	?>
 

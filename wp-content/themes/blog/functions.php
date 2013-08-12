@@ -2,7 +2,7 @@
 function arbol_setup() {
 	add_theme_support( 'custom-background' );
 
-	add_theme_support( 'post-formats', array( 'image', 'video' ) );
+	add_theme_support( 'post-formats', array( 'image', 'video', 'gallery' ) );
 
 	add_theme_support( 'post-thumbnails' );
 	//margin between images: 20px;
@@ -69,6 +69,13 @@ function my_post_fields( $groups ) {
 					array(
 						'id'      => 'video_url',
 						'title'   => 'Youtube video url',
+						'desc'    => '',
+						'type'    => 'text',
+						'default' => ''
+					),
+					array(
+						'id'      => 'slider_alias',
+						'title'   => 'Slider Alias',
 						'desc'    => '',
 						'type'    => 'text',
 						'default' => ''
