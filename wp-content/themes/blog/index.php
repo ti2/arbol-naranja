@@ -33,7 +33,7 @@
 		<?php endif; ?>
 	</div>
 
-	<?php load_more_button(); ?>
+	<?php //load_more_button(); ?>
 </div>
 
 <?php get_footer(); ?>
