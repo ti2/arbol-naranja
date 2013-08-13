@@ -124,7 +124,7 @@
 		$('#load-more').attr('data-querytax', taxonomy);
 	}
 
-	var filterCats = function(cat_id, cat_title) {
+	var filterCats = function(cat_id, cat_title, scroll) {
 		if (cat_id == '') {
 			var $posts_in_cat = $('#article-list .post');
 			changeTitle('');
@@ -150,7 +150,9 @@
 		}
 		$('#article-list').packery('layout');
 
-		scrollPage('articles');
+		if (scroll !== false) {
+			scrollPage('articles');
+		}
 	}
 
 	var changeCat = function(event) {
@@ -189,8 +191,13 @@
 		var post_id = $(this).attr('id');
 		var post_title = $(this).find('.title-over-img').text();
 
-		history.pushState( {post_id: post_id, post_title: post_title, page: 'post'}, null, $(this).children('a').attr('href') );
+		var cats = $(this).attr('class').match(/cat-\S*/g);
+		var first_cat_id = cats[0].slice(4);
+		var first_cat_title = $.trim( $('.cat-item-'+first_cat_id).text() );
 
+		history.pushState( {post_id: post_id, post_title: post_title, cat_id: first_cat_id, cat_title: first_cat_title, page: 'post'}, null, $(this).children('a').attr('href') );
+
+		filterCats(first_cat_id, first_cat_title, false);
 		ajaxPost(post_id, post_title);
 	}
 
@@ -207,7 +214,10 @@
 			var html_id = $('#main article').attr('id');
 			var post_id = html_id.substr(5);
 			var post_title = $('#main article header h1').text();
-			history.replaceState( {post_id: post_id, post_title: post_title, page: 'post'}, null, loc.href );
+			var cats = $('#main article').attr('class').match(/cat-\S*/g);
+			var first_cat_id = cats[0].slice(4);
+			var first_cat_title = $.trim( $('.cat-item-'+first_cat_id).text() );
+			history.replaceState( {post_id: post_id, post_title: post_title, cat_id: first_cat_id, cat_title: first_cat_title, page: 'post'}, null, loc.href );
 		} else if ($('body').hasClass('search')) {
 			var keywords = loc.search.substr(3);
 			history.replaceState( {search: keywords, page: 'search'}, null, loc.href );
@@ -219,6 +229,9 @@
 		var state = event.originalEvent.state;
 
 		if (state.page == 'post') {
+			if (typeof state.cat_id !== 'undefined') {
+				filterCats(state.cat_id, state.cat_title, false);
+			}
 			ajaxPost(state.post_id, state.post_title);
 		} else if (state.page == 'cat') {
 			filterCats(state.cat_id, state.cat_title);
