@@ -17,7 +17,7 @@
 	</div>
 
 	<?php
-	load_more_button();
+	//load_more_button();
 
 	wp_reset_query();
 	?>
