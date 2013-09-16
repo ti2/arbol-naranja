@@ -333,53 +333,53 @@ a {
 
 /* FOOTER */
 #footer {
-    margin: 0 auto;
-    padding: 16px 0;
-    text-align: center;
-    width: 970px;
+    background: #111;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 60px 0 0;
+    padding: 16px 20px;
+}
+
+.footer-block {
+    border-left: 1px solid #fff;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 12px;
+}
+.footer-block h4 {
+    font-size: 14px;
+    margin: 0;
+}
+.footer-block p {
+    font-size: 14px;
+    margin: 4px auto;
+    text-transform: none;
+}
+.wpcf7-text {
+    width: 150px;
+}
+.wpcf7-textarea {
+    height: 40px;
+    width: 150px;
 }
 
 #footer-logos{
+    border: none;
     margin: 0 auto;
 }
 #footer-logos a {
     display: inline-block;
-    margin: 0 36px;
+    margin: 0 12px;
+}
+#footer-logos img {
+    height: 80px;
+    width: 212px;
 }
 .footer-logo {
-    background-image: url(../img/arbollogo.png);
-    height: 86px;
-    width: 185px;
-}
-#footer p {
-    margin: 28px auto;
-    font: bold 14px calibri, sans-serif;
-}
-
-.menu-footer ul {
-    margin: 32px 0 24pz;
-    padding: 0;
-}
-.menu-footer li {
-    display: inline-block;
-    font-size: 22px;
-    list-style: none;
-    margin: 0 15px;
-}
-.menu-footer li:before {
-    border-color: transparent #444;
-    border-style: solid;
-    border-width: 6px 0 6px 12px;
-    content: '';
-    display: inline-block;
-    margin: 0 4px 2px 0;
-}
-.menu-footer li a {
-    color: #444;
-}
-
-.fb-like {
-    vertical-align: middle;
+    background-image: url(../img/logos-arbol.png);
+    background-size: contain;
+    height: 80px;
+    width: 212px;
 }
 
 /* RESPONSIVE */

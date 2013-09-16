@@ -11,8 +11,8 @@
 
 		<div id="footer-logos" class="footer-block">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="ir footer-logo"><?php bloginfo( 'name' ); ?></a>
-			<a href=""><img src="<?php bloginfo('template_directory'); ?>/img/casalogo.png" /></a>
-			<a href=""><img src="<?php bloginfo('template_directory'); ?>/img/notlogo.png" /></a>
+			<a href=""><img src="<?php bloginfo('template_directory'); ?>/img/logos-casa.png" /></a>
+			<a href=""><img src="<?php bloginfo('template_directory'); ?>/img/logos-nota.png" /></a>
 		</div>
 	</footer>
 
