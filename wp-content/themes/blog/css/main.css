@@ -28,6 +28,7 @@ body {
     background-color: #ededed;
     margin: 0 auto;
     max-width: 1280px;
+    padding: 58px 0 0;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -39,21 +40,30 @@ a {
 
 /* HEADER */
 #header {
-    margin: 0 auto;
-    padding: 16px 0 10px;
-    width: 970px;
+    background: url('rgba.php/rgba(0, 0, 0, 0.8)');
+    background: rgba(0,0,0,.8);
+    left: 0;
+    margin: 0 auto 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+#header-wrapper {
+    max-width: 1280px;
 }
 #header-logo {
     float: left;
-    height: 43px;
-    line-height: 43px;
-    margin: 0;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 20px;
 }
 .logo {
-    background-image: url(../img/logoweb.png);
+    background-image: url(../img/logo-new.png);
+    background-size: contain;
     display: inline-block;
-    height: 43px;
-    width: 220px;
+    height: 47px;
+    width: 170px;
 }
 #company-web-link {
     float: right;
@@ -67,6 +77,7 @@ a {
 .menu-toggle {
     color: #999;
     cursor: pointer;
+    display: none;
     font-size: 21px;
     line-height: 43px;
     margin: 0;
@@ -82,23 +93,9 @@ a {
 }
 
 #main-nav {
-    clear: both;
     font-family: Helvetica, Arial, sans-serif;
-    left: 0;
-    margin: 0 auto 8px;
-    position: absolute;
-    top: 69px;
-    width: 100%;
-    z-index: 999;
-}
-#main-nav.fixed-nav {
-    left: 0;
-    position: fixed;
-    top: 0;
 }
 .menu-main {
-    background: url('rgba.php/rgba(0, 0, 0, 0.8)');
-    background: rgba(0,0,0,.8);
     margin: 0;
     padding: 0;
     text-align: center;
@@ -384,7 +381,7 @@ a {
 
 /* RESPONSIVE */
 @media only screen and (max-width: 999px) {
-    #header, #articles, .main-post, #post-media, #footer {
+    #articles, .main-post, #post-media, #footer {
         width: 511px;
     }
     #company-web-link {
@@ -397,13 +394,6 @@ a {
     .menu-toggle:after {
         border-width: 8px 4px 0;
         margin: 0 6px 1px;
-    }
-
-    .menu-main li {
-        margin: 8px 12px;
-    }
-    .menu-social .menu {
-        margin: 8px;
     }
 
     #articles-title {
@@ -486,7 +476,7 @@ a {
 }
 
 @media only screen and (max-width: 532px) {
-    #header, #articles, .main-post, #post-media, #footer {
+    #articles, .main-post, #post-media, #footer {
         width: 320px;
     }
     #company-web-link, .rev_slider_wrapper, #searchform {
@@ -499,6 +489,7 @@ a {
     }
     .menu-toggle {
         background-image: url(../img/iphone-menu.png);
+        display: block;
         height: 43px;
         overflow: hidden;
         width: 42px;
@@ -519,12 +510,10 @@ a {
         height: 100%;
         left: 0;
         margin: 0;
-        width: 67%;
-        transition: all 0.5s;
-    }
-    #main-nav.fixed-nav {
         position: absolute;
         top: 69px;
+        transition: all 0.5s;
+        width: 67%;
     }
     #main-nav.left {
         left: -67%;

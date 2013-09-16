@@ -69,8 +69,6 @@
 	var toggleMenu = function()
 	{
 		if (window_width > 532) {
-			$('#main-nav').slideToggle();
-		} else {
 			$('#main-nav').toggleClass('left');
 		}
 	}
@@ -80,11 +78,9 @@
 		var $nav = $('#main-nav');
 
 		if (window_width > 532) {
-			$nav.hide();
 			$nav.removeClass('left');
 		} else {
 			$nav.addClass('left');
-			$nav.show();
 		}
 	}
 
@@ -101,7 +97,6 @@
 	resetMenu();
 
 	$(window).resize(adjustMenu);
-	$('.menu-toggle').click(toggleMenu);
 	$('#main-nav a').click(function() {
 		if (window_width <= 532) {
 			toggleMenu();

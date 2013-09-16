@@ -25,20 +25,29 @@
 	?>
 </head>
 
-<body <?php body_class(); ?>><div id="wrapper">
+<body <?php body_class(); ?>>
 	<header id="header" role="banner">
-		<h1 id="header-logo">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="ir logo"><?php bloginfo( 'name' ); ?></a>
-		</h1>
+		<div id="header-wrapper">
+			<h1 id="header-logo">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="ir logo"><?php bloginfo( 'name' ); ?></a>
+			</h1>
 
-		<h3 id="company-web-link"><a href="">Nuestra empresa</a></h3>
+			<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 
-		<h3 class="menu-toggle">Secciones</h3>
+			<h3 class="menu-toggle">Secciones</h3>
+
+			<nav id="main-nav" role="navigation">
+				<ul class="menu-main">
+				<?php wp_list_categories('orderby=ID&title_li='); ?>
+				</ul>
+			</nav>
+
+		</div>
 	</header>
 
-	<nav id="main-nav" role="navigation">
-		<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
-		<ul class="menu-main">
-		<?php wp_list_categories('orderby=ID&title_li='); ?>
-		</ul>
-	</nav>
+	<div id="wrapper">
+
+
+
+
+
