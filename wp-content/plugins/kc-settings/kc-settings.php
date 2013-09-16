@@ -2,7 +2,7 @@
 
 /**
  * @package KC_Settings
- * @version 2.8.2
+ * @version 2.8.5
  */
 
 
@@ -10,7 +10,7 @@
 Plugin name: KC Settings
 Plugin URI: http://kucrut.org/kc-settings/
 Description: Easily create plugin/theme settings page, custom fields metaboxes, term meta and user meta settings.
-Version: 2.8.2
+Version: 2.8.5
 Author: Dzikri Aziz
 Author URI: http://kucrut.org/
 License: GPL v2
@@ -18,7 +18,9 @@ Text Domain: kc-settings
 */
 
 final class kcSettings {
-	const version = '2.8.2';
+
+	const version = '2.8.5';
+
 	protected static $data = array(
 		'paths'    => '',
 		'pages'    => array('media-upload-popup'),
@@ -30,19 +32,21 @@ final class kcSettings {
 		'kids'     => array(),
 		'blacklist' => array(
 			'theme' => array(
-				'multiinput', 'multiselect', 'special', 'editor', 'checkbox'
-				, 'file', 'image', 'upload'
-				, 'date', 'datetime', 'datetime-local', 'week', 'month', 'time'
+				'multiinput', 'multiselect', 'special', 'editor', 'checkbox',
+				'file', 'image', 'upload', 'media',
+				'date', 'datetime', 'datetime-local', 'week', 'month', 'time',
 			),
 			'menu_item' => array(
-				'multiinput', 'editor', 'file', 'image', 'upload'
-				, 'date', 'datetime', 'datetime-local', 'week', 'month', 'time'
+				'multiinput', 'editor', 'file', 'image', 'upload', 'media',
+				'date', 'datetime', 'datetime-local', 'week', 'month', 'time',
 			),
 			'menu_nav' => array(
-				'editor', 'multiinput'
-			)
+				'editor', 'multiinput',
+			),
 		),
-		'is_kcs_page' => false
+		'is_kcs_page'    => false,
+		'field_defaults' => array(),
+		'media_fields'   => array(),
 	);
 
 
@@ -62,12 +66,29 @@ final class kcSettings {
 		if ( is_readable($mo_file) )
 			load_textdomain( 'kc-settings', $mo_file );
 
+		self::_set_field_defaults();
+
 		add_action( 'admin_notices', array(__CLASS__, '_admin_notices') );
 		add_action( 'init', array(__CLASS__, 'init'), 99 );
 
 		# Debug bar extension
 		require_once "{$paths['inc']}/debug-bar-ext.php";
 		add_filter( 'debug_bar_panels', array(__CLASS__, 'debug_bar_ext') );
+	}
+
+
+	private static function _set_field_defaults() {
+		self::$data['field_defaults'] = array(
+			'media' => array(
+				'multiple'      => false,
+				'mime_type'     => '_all',
+				'frame_title'   => __( 'Select', 'kc-settings' ), // Title of the media manager lightbox
+				'select_button' => __( 'Select', 'kc-settings' ), // Button text
+				'insert_button' => __( 'Select', 'kc-settings' ), // Button text
+				'preview_size'  => 'thumbnail',
+				'animate'       => 500,
+			),
+		);
 	}
 
 
@@ -86,7 +107,7 @@ final class kcSettings {
 		kcSettings_options::init();
 
 		# Include samples (for development)
-		// self::_samples( array('01_plugin', '02_post', '03_term', '04_user', '05_theme', '06_attachment', '07_menu_item', '08_menu_nav') );
+		//self::_samples( array('01_plugin', '02_post', '03_term', '04_user', '05_theme', '06_attachment', '07_menu_item', '08_menu_nav') );
 
 		# Get all settings
 		self::_bootstrap_settings();
@@ -97,7 +118,7 @@ final class kcSettings {
 
 		# Theme customizer
 		if ( isset(self::$data['settings']['theme']) && !empty(self::$data['settings']) )
-			require_once self::$data['paths']['inc']."/theme.php";
+			require_once self::$data['paths']['inc'] . '/theme.php';
 	}
 
 
@@ -197,13 +218,13 @@ final class kcSettings {
 			'section_no_fields'   => __( "One of your settings' section doesn't have <b>fields</b> set.", 'kc-settings'),
 			'section_no_id'       => __( "One of your settings' sections doesn't have <b>ID</b> set.", 'kc-settings'),
 			'section_no_title'    => __( "One of your settings' sections doesn't have <b>title</b> set.", 'kc-settings'),
-			'section_metabox_old' => __( "One of your settings is still using the old format for metabox setting, please migrate it to the new one.", 'kc-settings'),
+			'section_metabox_old' => __( 'One of your settings is still using the old format for metabox setting, please migrate it to the new one.', 'kc-settings'),
 			'field_no_id'         => __( "One of your fields doesn't have <b>ID</b> set.", 'kc-settings'),
 			'field_no_title'      => __( "One of your fields doesn't have <b>title</b> set.", 'kc-settings'),
 			'field_no_type'       => __( "One of your fields doesn't have <b>type</b> set.", 'kc-settings'),
 			'field_no_opt'        => __( "One of your fields doesn't have the required <b>options</b> set.", 'kc-settings'),
 			'field_no_cb'         => __( "One of your fields doesn't have the required <b>callback</b> set, or is not callable.", 'kc-settings'),
-			'field_nested_multi'  => __( "multiinput fields cannot have a multiinput sub-field.", 'kc-settings')
+			'field_nested_multi'  => __( 'multiinput fields cannot have a multiinput sub-field.', 'kc-settings')
 		);
 
 		$kcsb = array(
@@ -389,7 +410,6 @@ final class kcSettings {
 					$nu[$type][$g_idx] = $group;
 				}
 			}
-
 		}
 
 		# Merge Post, Term & User metadata
@@ -429,13 +449,13 @@ final class kcSettings {
 			# Custom callback for section?
 			if ( $type == 'plugin' && isset($section['cb']) ) {
 				if ( !is_callable($section['cb']) ) {
-					trigger_error( self::$data['messages']['bootstrap']["section_no_cb"] );
+					trigger_error( self::$data['messages']['bootstrap']['section_no_cb'] );
 					continue;
 				}
 			}
 			else {
 				if ( !isset($section['fields']) || !is_array($section['fields']) || empty($section['fields']) ) {
-					trigger_error( self::$data['messages']['bootstrap']["section_no_fields"] );
+					trigger_error( self::$data['messages']['bootstrap']['section_no_fields'] );
 					continue;
 				}
 				else {
@@ -453,14 +473,14 @@ final class kcSettings {
 			if ( $type == 'post' || ($type == 'plugin' && $group['display']) == 'metabox' ) {
 				# TODO: remove in version 3.0
 				if ( isset($section['priority']) ) {
-					trigger_error( self::$data['messages']['bootstrap']["section_metabox_old"] );
+					trigger_error( self::$data['messages']['bootstrap']['section_metabox_old'] );
 					$metabox_priority = $section['priority'];
 					unset( $section['priority'] );
 				}
 				$metabox_default = array(
 					'context'     => 'normal',
 					'priority'    => isset($metabox_priority) ? $metabox_priority : 'default',
-					'button_text' => __('Save Changes')
+					'button_text' => __('Save Changes'),
 				);
 				$metabox = isset($section['metabox']) ? $section['metabox'] : array();
 				$section['metabox'] = wp_parse_args( $metabox, $metabox_default );
@@ -530,18 +550,21 @@ final class kcSettings {
 						array(
 							'id'    => 'key',
 							'title' => __('Key', 'kc-settings'),
-							'type'  => 'text'
+							'type'  => 'text',
 						),
 						array(
 							'id'    => 'value',
 							'title' => __('Value', 'kc-settings'),
-							'type'  => 'textarea'
-						)
+							'type'  => 'textarea',
+						),
 					);
 				}
 				else {
 					$field['subfields'] = $subfields['fields'];
 				}
+			}
+			elseif ( $field['type'] == 'media' ) {
+				$field = wp_parse_args( $field, self::$data['field_defaults']['media'] );
 			}
 
 			# Has default value?
@@ -589,11 +612,11 @@ final class kcSettings {
 		$suffix = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
 
 		# Common
-		wp_register_script( 'modernizr',        "{$path['scripts']}/modernizr-2.6.2-20121030{$suffix}.js", false, '2.6.2-20121030', false );
-		wp_register_script( 'kc-settings-base', "{$path['scripts']}/kc-settings-base{$suffix}.js", array('jquery', 'modernizr', 'json2'), self::version, true );
-		wp_register_script( 'kc-settings', "{$path['scripts']}/kc-settings{$suffix}.js", array('kc-settings-base', 'jquery-ui-sortable'), self::version, true );
-		wp_register_style(  'kc-settings', "{$path['styles']}/kc-settings{$suffix}.css", false, self::version );
-		add_action( 'admin_print_footer_scripts', array(__CLASS__, '_sns_vars'), 9 );
+		wp_register_script( 'modernizr',         "{$path['scripts']}/modernizr-2.6.2-20121030{$suffix}.js", false, '2.6.2-20121030', false );
+		wp_register_script( 'kc-media-selector', "{$path['scripts']}/media-selector{$suffix}.js", array('jquery-ui-sortable'), self::version, true );
+		wp_register_script( 'kc-settings-base',  "{$path['scripts']}/kc-settings-base{$suffix}.js", array('jquery', 'modernizr', 'json2'), self::version, true );
+		wp_register_script( 'kc-settings',       "{$path['scripts']}/kc-settings{$suffix}.js", array('kc-settings-base', 'kc-media-selector'), self::version, true );
+		wp_register_style(  'kc-settings',       "{$path['styles']}/kc-settings{$suffix}.css", false, self::version );
 
 		$jqui_theme = ( $admin_color == 'fresh' ) ? 'flick' : 'cupertino';
 		wp_register_style(  'jquery-ui', "{$path['styles']}/jquery-ui/{$jqui_theme}/jquery-ui-1.9.2.custom{$suffix}.css", false, '1.8.23' );
@@ -607,6 +630,8 @@ final class kcSettings {
 		# Uploader
 		wp_register_script( 'kc-settings-upload',        "{$path['scripts']}/upload{$suffix}.js", array('media-upload'), self::version, true );
 		wp_register_script( 'kc-settings-upload-single', "{$path['scripts']}/upload-single{$suffix}.js", array('media-upload'), self::version, true );
+
+		add_action( 'admin_print_footer_scripts', array(__CLASS__, '_sns_vars'), 9 );
 	}
 
 
@@ -633,69 +658,77 @@ final class kcSettings {
 			elseif ( (isset($_REQUEST['kcsf']) && $_REQUEST['kcsf']) || strpos( wp_get_referer(), 'kcsf') !== false )
 				wp_enqueue_script( 'kc-settings-upload' );
 		}
+
+		$media_args = ( 'post' === get_current_screen()->base ) ? array('post' => get_queried_object_id()) : '';
+		wp_enqueue_media( $media_args );
 	}
 
 
 	public static function _sns_vars() {
 		global $wp_scripts, $wp_locale;
 		if ( !in_array('kc-settings-base', $wp_scripts->in_footer) )
-			return; ?>
+			return;
+
+		$vars = array(
+			'locale' => get_locale(),
+			'paths'  => self::$data['paths'],
+			'js'     => kc_get_sns( array('jquery-ui-datepicker', 'thickbox', 'jquery-ui-sortable', 'chosen', 'wp-color-picker', 'kc-media-selector'), 'js' ),
+			'css'    => kc_get_sns( array('jquery-ui', 'thickbox', 'chosen', 'wp-color-picker'), 'css' ),
+			'upload' => array(
+				'text' => array(
+					'head'     => 'KC Settings',
+					'empty'    => __( 'Please upload some files and then go back to this tab.', 'kc-settings' ),
+					'checkAll' => __( 'Select all files', 'kc-settings' ),
+					'clear'    => __( 'Clear selections', 'kc-settings' ),
+					'invert'   => __( 'Invert selection', 'kc-settings' ),
+					'addFiles' => __( 'Add files to collection', 'kc-settings' ),
+					'info'     => __( 'Click the "Media Library" tab to insert files that are already upload, or, upload your files and then go to the "Media Library" tab to insert the files you just uploaded.', 'kc-settings' ),
+					'selFile'  => __( 'Select file', 'kc-settings' ),
+					'filenomatch' => __( "You can't select this because the file type doesn't match", 'kc-settings' ),
+				),
+			),
+			'texts' => array(
+				'show'   => __('Show', 'kc-settings'),
+				'hide'   => __('Hide', 'kc-settings'),
+				'now'    => __('Now', 'kc-settings'),
+				'done'   => __('Done', 'kc-settings'),
+				'time'   => __('Time', 'kc-settings'),
+				'hour'   => __('Hour', 'kc-settings'),
+				'minute' => __('Minute', 'kc-settings'),
+				'today'  => __('Today', 'kc-settings'),
+				'prev'   => __('Prev', 'kc-settings'),
+				'next'   => __('Next', 'kc-settings'),
+				'chooseTime' => __('Choose time', 'kc-settings'),
+				'monthNames' => array(
+					'full' => $wp_locale->month,
+					'shrt' => $wp_locale->month_abbrev,
+				),
+				'dayNames' => array(
+					'full' => $wp_locale->weekday,
+					'shrt' => $wp_locale->weekday_abbrev,
+					'min'  => array(
+						_x('Su', 'day min name', 'kc-settings'),
+						_x('Mo', 'day min name', 'kc-settings'),
+						_x('Tu', 'day min name', 'kc-settings'),
+						_x('We', 'day min name', 'kc-settings'),
+						_x('Th', 'day min name', 'kc-settings'),
+						_x('Fr', 'day min name', 'kc-settings'),
+						_x('Sa', 'day min name', 'kc-settings'),
+					),
+				),
+				'weekNames' => array(
+					'full' => __('Week', 'kc-settings'),
+					'shrt' => _x('Wk', 'week short', 'kc-settings'),
+				),
+			),
+			'mediaFields' => self::$data['media_fields'],
+		);
+?>
 <script>
-	var kcSettings = <?php echo json_encode( array(
-		'locale' => get_locale(),
-		'paths'  => self::$data['paths'],
-		'js'     => kc_get_sns( array('jquery-ui-datepicker', 'thickbox', 'jquery-ui-sortable', 'chosen', 'wp-color-picker'), 'js' ),
-		'css'    => kc_get_sns( array('jquery-ui', 'thickbox', 'chosen', 'wp-color-picker'), 'css' ),
-		'upload' => array(
-			'text' => array(
-				'head'     => 'KC Settings',
-				'empty'    => __( 'Please upload some files and then go back to this tab.', 'kc-settings' ),
-				'checkAll' => __( 'Select all files', 'kc-settings' ),
-				'clear'    => __( 'Clear selections', 'kc-settings' ),
-				'invert'   => __( 'Invert selection', 'kc-settings' ),
-				'addFiles' => __( 'Add files to collection', 'kc-settings' ),
-				'info'     => __( 'Click the "Media Library" tab to insert files that are already upload, or, upload your files and then go to the "Media Library" tab to insert the files you just uploaded.', 'kc-settings' ),
-				'selFile'  => __( 'Select file', 'kc-settings' ),
-				'filenomatch' => __( "You can't select this because the file type doesn't match", 'kc-settings' )
-			)
-		),
-		'texts' => array(
-			'show'   => __('Show', 'kc-settings'),
-			'hide'   => __('Hide', 'kc-settings'),
-			'now'    => __('Now', 'kc-settings'),
-			'done'   => __('Done', 'kc-settings'),
-			'time'   => __('Time', 'kc-settings'),
-			'hour'   => __('Hour', 'kc-settings'),
-			'minute' => __('Minute', 'kc-settings'),
-			'today'  => __('Today', 'kc-settings'),
-			'prev'   => __('Prev', 'kc-settings'),
-			'next'   => __('Next', 'kc-settings'),
-			'chooseTime' => __('Choose time', 'kc-settings'),
-			'monthNames' => array(
-				'full'  => $wp_locale->month,
-				'shrt'  => $wp_locale->month_abbrev
-			),
-			'dayNames' => array(
-				'full'  => $wp_locale->weekday,
-				'shrt'  => $wp_locale->weekday_abbrev,
-				'min'   => array(
-					_x('Su', 'day min name', 'kc-settings'),
-					_x('Mo', 'day min name', 'kc-settings'),
-					_x('Tu', 'day min name', 'kc-settings'),
-					_x('We', 'day min name', 'kc-settings'),
-					_x('Th', 'day min name', 'kc-settings'),
-					_x('Fr', 'day min name', 'kc-settings'),
-					_x('Sa', 'day min name', 'kc-settings')
-				)
-			),
-			'weekNames' => array(
-				'full' => __('Week', 'kc-settings'),
-				'shrt' => _x('Wk', 'week short', 'kc-settings'),
-			)
-		)
-	) ); ?>
+  var kcSettings = <?php echo json_encode( $vars ); ?>
 </script>
-	<?php }
+<?php
+	}
 
 
 	private static function _samples( $types ) {
@@ -756,8 +789,11 @@ final class kcSettings {
 			foreach ( $messages as $message ) {
 				if ( empty($message) )
 					continue;
-
-				echo "<div class='{$type}'>".wpautop( $message )."</div>\n";
+				?>
+				<div class="<?php echo esc_attr($type) ?>">
+					<?php echo wpautop( $message ) // xss ok ?>
+				</div>
+				<?php
 			}
 		}
 	}
@@ -784,6 +820,11 @@ final class kcSettings {
 			$type = 'updated';
 
 		self::$data['notices'][$type][] = $message;
+	}
+
+
+	public static function add_media_field( $id, $args ) {
+		self::$data['media_fields'][ $id ] = $args;
 	}
 
 

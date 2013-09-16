@@ -3,8 +3,8 @@ Contributors: kucrut
 Donate link: http://kucrut.org/
 Tags: theme-options, plugin-options, settings, options, term-meta, category-meta, post-meta, custom-fields, user-meta, attachment, theme-customizer
 Requires at least: 3.5
-Tested up to: 3.5
-Stable tag: 2.8.2
+Tested up to: 3.5.2
+Stable tag: 2.8.5
 
 Easily create plugin/theme settings pages, custom fields metaboxes and term/user metadata settings.
 
@@ -41,6 +41,15 @@ For complete howto, please find the readme.html file inside the plugin directory
 6. Theme customizer
 
 == Changelog ==
+
+= 2.8.5 =
+* Improve media field type and add it to the builder
+
+= 2.8.4 =
+* Fix media field conflict in post editing screens
+
+= 2.8.3 =
+* New field type: media (WP 3.5 media modal dialog)
 
 = 2.8.2 =
 * Fixed radio field, props if6was9design
