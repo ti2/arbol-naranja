@@ -130,8 +130,11 @@ a {
     overflow: hidden;
     text-transform: none;
     vertical-align: top;
-    width: 1em;
+    width: 20px;
     -webkit-font-smoothing: antialiased;
+}
+.menu-social .menu-item a:before {
+    margin-right: 20px;
 }
 .menu-item a[title="google-plus"]:before {
     content: "\e000";
@@ -483,16 +486,18 @@ a {
         display: none;
     }
 
-    #header-logo {
-        float: right;
-        margin-right: 40px;
+    #header {
+        position: absolute;
     }
     .menu-toggle {
         background-image: url(../img/iphone-menu.png);
         display: block;
-        height: 43px;
+        float: right;
+        height: 46px;
+        line-height: 48px;
+        margin: 0 20px;
         overflow: hidden;
-        width: 42px;
+        width: 45px;
         /* IE 6/7 fallback */
         *text-indent: -9999px;
     }
@@ -506,21 +511,25 @@ a {
         margin: 0;
     }
 
-    #main-nav {
-        height: 100%;
+    #main-nav, .menu-social {
+        background: url('rgba.php/rgba(0, 0, 0, 0.8)');
+        background: rgba(0,0,0,.8);
         left: 0;
-        margin: 0;
         position: absolute;
-        top: 69px;
+        top: 250px;
         transition: all 0.5s;
         width: 67%;
     }
-    #main-nav.left {
+    #main-nav.left, .menu-social.left {
         left: -67%;
+    }
+
+    #main-nav {
+        top: 48px;
     }
     .menu-main {
         /*height: 100%;*/
-        padding: 10%;
+        padding: 0 10%;
         text-align: left;
     }
     .menu-main li {

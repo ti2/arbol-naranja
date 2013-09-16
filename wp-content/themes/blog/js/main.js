@@ -68,8 +68,8 @@
 	/* MENU TOGGLE */
 	var toggleMenu = function()
 	{
-		if (window_width > 532) {
-			$('#main-nav').toggleClass('left');
+		if (window_width <= 532) {
+			$('#main-nav, .menu-social').toggleClass('left');
 		}
 	}
 
@@ -77,17 +77,16 @@
 	{
 		var $nav = $('#main-nav');
 
-		if (window_width > 532) {
-			$nav.removeClass('left');
-		} else {
+		if (window_width <= 532) {
 			$nav.addClass('left');
+			$('.menu-social').addClass('left');
 		}
 	}
 
 	var adjustMenu = function()
 	{
 		window_width = $(window).width();
-		if ( $('#main-nav').hasClass('left') || $('#main-nav').is(':hidden') ) {
+		if ( ! $('#main-nav').hasClass('left') || ! $('#main-nav').is(':hidden') ) {
 			resetMenu();
 		}
 	}
@@ -97,6 +96,7 @@
 	resetMenu();
 
 	$(window).resize(adjustMenu);
+	$('.menu-toggle').click(toggleMenu);
 	$('#main-nav a').click(function() {
 		if (window_width <= 532) {
 			toggleMenu();
