@@ -12,7 +12,6 @@
 
 		<?php wp_nav_menu( array('theme_location' => 'footer', 'container_class' => 'menu-footer' )); ?>
 		<div id="footer-like" class="fb-like" data-href="http://arbolnaranja.com/" data-send="true" data-width="420"></div>
-		<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
 	</footer>
 
 </div>

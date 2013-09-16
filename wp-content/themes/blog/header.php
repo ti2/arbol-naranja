@@ -37,7 +37,8 @@
 	</header>
 
 	<nav id="main-nav" role="navigation">
-		<ul>
+		<?php wp_nav_menu( array('theme_location' => 'social', 'container_class' => 'menu-social' )); ?>
+		<ul class="menu-main">
 		<?php wp_list_categories('orderby=ID&title_li='); ?>
 		</ul>
 	</nav>
