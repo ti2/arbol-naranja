@@ -120,17 +120,17 @@ a {
 }
 .menu-social .menu-item {
     display: inline-block;
+    margin: 0 8px;
 }
 .menu-social .menu-item a {
     color: #fff;
     display: inline-block;
     font: 1em/1.75 'icomoon';
-    margin: 0 8px;
     speak: none;
     overflow: hidden;
     text-transform: none;
     vertical-align: top;
-    width: 20px;
+    width: 18px;
     -webkit-font-smoothing: antialiased;
 }
 .menu-social .menu-item a:before {
@@ -387,9 +387,8 @@ a {
     #articles, .main-post, #post-media, #footer {
         width: 511px;
     }
-    #company-web-link {
-        font-size: 16px;
-        width: 99px;
+    #header-logo {
+        margin: 0 10px;
     }
     .menu-toggle {
         font-size: 16px;
@@ -397,6 +396,15 @@ a {
     .menu-toggle:after {
         border-width: 8px 4px 0;
         margin: 0 6px 1px;
+    }
+
+    .menu-social .menu-item {
+        margin: 0 4px;
+    }
+
+    .menu-main li {
+        font-size: 12px;
+        margin: 12px 4px;
     }
 
     #articles-title {
@@ -534,6 +542,7 @@ a {
     }
     .menu-main li {
         display: block;
+        font-size: 14px;
     }
 
     #articles-title {
