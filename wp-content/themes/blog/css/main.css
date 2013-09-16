@@ -490,7 +490,7 @@ a {
         position: absolute;
     }
     .menu-toggle {
-        background-image: url(../img/iphone-menu.png);
+        background-image: url(../img/iphone-menu-white.png);
         display: block;
         float: right;
         height: 46px;
