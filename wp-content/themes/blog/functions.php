@@ -33,6 +33,23 @@ function arbol_setup() {
 }
 add_action( 'after_setup_theme', 'arbol_setup' );
 
+/**
+ * widgets
+ */
+function create_widgets_areas() {
+	//Header
+	register_sidebar( array(
+		'name' => 'Widgets footer',
+		'id' => 'footer-widget-area',
+		'description' => 'Widgets para el footer (formularios)',
+		'before_widget' => '<div class="footer-block">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>',
+	) );
+}
+add_action( 'widgets_init', 'create_widgets_areas' );
+
 function create_taxonomies()
 {
 	register_taxonomy(
