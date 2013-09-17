@@ -28,7 +28,7 @@ body {
     background-color: #ededed;
     margin: 0 auto;
     max-width: 1280px;
-    padding: 58px 0 0;
+    padding: 68px 0 0;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -51,12 +51,13 @@ a {
 }
 #header-wrapper {
     max-width: 1280px;
+    margin: 0 auto;
 }
 #header-logo {
     float: left;
     height: 48px;
     line-height: 48px;
-    margin: 0 20px;
+    margin: 5px 20px;
 }
 .logo {
     background-image: url(../img/logo-new.png);
@@ -105,7 +106,7 @@ a {
     font-size: 14px;
     line-height: 2em;
     list-style: none;
-    margin: 10px 15px;
+    margin: 15px;
 }
 .menu-main li a {
     color: #fff;
@@ -115,7 +116,7 @@ a {
     float: right;
 }
 .menu-social .menu {
-    margin: 10px;
+    margin: 15px 10px;
     padding: 0;
 }
 .menu-social .menu-item {
@@ -344,8 +345,8 @@ a {
     border-left: 1px solid #fff;
     display: inline-block;
     vertical-align: top;
-    max-width: 146px;
-    padding: 0 12px;
+    max-width: 160px;
+    padding: 0 8px;
 }
 .footer-block h4 {
     font-size: 14px;
@@ -353,7 +354,7 @@ a {
 }
 .footer-block p {
     font-size: 12px;
-    margin: 4px auto;
+    margin: 6px auto;
     text-transform: none;
 }
 .wpcf7-text {
@@ -397,7 +398,7 @@ a {
         width: 511px;
     }
     #header-logo {
-        margin: 0 10px;
+        margin: 5px 10px;
     }
     .menu-toggle {
         font-size: 16px;
@@ -413,7 +414,7 @@ a {
 
     .menu-main li {
         font-size: 12px;
-        margin: 12px 4px;
+        margin: 17px 4px;
     }
 
     #articles-title {
@@ -503,7 +504,7 @@ a {
         float: right;
         height: 46px;
         line-height: 48px;
-        margin: 0 20px;
+        margin: 6px 20px;
         overflow: hidden;
         width: 45px;
         /* IE 6/7 fallback */
@@ -533,7 +534,7 @@ a {
     }
 
     #main-nav {
-        top: 48px;
+        top: 58px;
     }
     .menu-main {
         /*height: 100%;*/
@@ -543,6 +544,7 @@ a {
     .menu-main li {
         display: block;
         font-size: 14px;
+        margin: 10px 4px;
     }
 
     #articles-title {
