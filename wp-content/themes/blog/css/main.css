@@ -278,14 +278,17 @@ a {
     height: auto;
     max-width: 100%;
 }
-#video-wrapper {
-    height: 0;
+.embed-container {
+    height: auto;
+    max-width: 100%;
     overflow: hidden;
     padding-bottom: 56.25%;
     padding-top: 30px;
     position: relative;
 }
-#video-wrapper iframe, #video-wrapper object, #video-wrapper embed {
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
     height: 100%;
     left: 0;
     position: absolute;

@@ -1,4 +1,10 @@
 <?php
+if ( ! isset( $content_width ) ) $content_width = 830;
+function embed_responsively($iframe) {
+	return '<div class="embed-container">'.$iframe.'</div>';
+}
+add_filter('oembed_result', 'embed_responsively');
+
 function arbol_setup() {
 	add_theme_support( 'custom-background' );
 
