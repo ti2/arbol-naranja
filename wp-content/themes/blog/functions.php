@@ -121,6 +121,26 @@ function mytheme_options( $settings ) {
 				),
 			)
 		),
+		array(
+			'id'     => 'wrapper_background',
+			'title'  => 'Fondo contenedor',
+			'fields' => array(
+				array(
+					'id'    => 'wrapper_back_file',
+					'title' => 'Imagen de fondo Contenedor',
+					'type'  => 'file', // Not supported in theme customizer
+					'mode'  => 'single',
+					'size'  => 'full'
+				),
+				array(
+					'id'      => 'wrapper_back_color',
+					'title'   => 'Color de fondo Contenedor',
+					'type'    => 'color',
+					'default' => '#ededed',
+					'desc'    => 'Format: <code>#ededed</code>'
+				)
+			)
+		)
 		// You can add more sections here...
 	);
 

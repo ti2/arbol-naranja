@@ -45,9 +45,11 @@
 		</div>
 	</header>
 
-	<div id="wrapper">
+	<?php
+	$wrapper_back_img_id = kc_get_option( 'nso', 'wrapper_background', 'wrapper_back_file' );
+	$wrapper_back_img_url = wp_get_attachment_url($wrapper_back_img_id);
+	$wrapper_back_color = kc_get_option( 'nso', 'wrapper_background', 'wrapper_back_color' );
+	$wrapper_inline_style = "background-image: url('$wrapper_back_img_url'); background-color: $wrapper_back_color;";
+	?>
 
-
-
-
-
+	<div id="wrapper" style="<?php echo $wrapper_inline_style; ?>">
