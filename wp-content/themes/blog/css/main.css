@@ -374,15 +374,22 @@ a {
 #footer-logos a {
     display: inline-block;
     margin: 0 8px;
+    vertical-align: middle;
 }
-#footer-logos img {
+#footer-logos .logo-casa {
     height: 80px;
     width: 212px;
+    vertical-align: middle;
+}
+#footer-logos .logo-nota {
+    height: 67px;
+    width: 212px;
+    vertical-align: middle;
 }
 .footer-logo {
     background-image: url(../img/logos-arbol.png);
     background-size: contain;
-    height: 80px;
+    height: 67px;
     width: 212px;
 }
 
