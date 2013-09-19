@@ -109,4 +109,11 @@
 		$('#searchtoggle').click(toggleSearch);
 	});
 
+	//footer collapse
+	$('#footer').addClass('collapsed');
+	$('.footer-block h4').click(function() {
+		$('#footer').toggleClass('collapsed');
+		$("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 'slow');
+	});
+
 })(jQuery);
