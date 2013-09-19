@@ -106,7 +106,7 @@
 	//after fonts and images are loaded
 	$(window).load(function() {
 		hideSearch();
-		$('#seartoggle').click(toggleSearch);
+		$('#searchtoggle').click(toggleSearch);
 	});
 
 })(jQuery);

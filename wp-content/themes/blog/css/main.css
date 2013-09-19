@@ -9,7 +9,7 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'icomoon';
+    font-family: 'icomoon2';
     src:url('../fonts/icomoon.eot');
     src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
         url('../fonts/icomoon.woff') format('woff'),
@@ -126,7 +126,7 @@ a {
 .menu-social .menu-item a {
     color: #fff;
     display: inline-block;
-    font: 1em/1.75 'icomoon';
+    font: 1em/1.75 'icomoon2';
     speak: none;
     overflow: hidden;
     text-transform: none;
@@ -181,6 +181,12 @@ a {
     margin: 0 6px 0 0;
 }
 
+#searchtoggle {
+    color: #999;
+    cursor: pointer;
+    font: 1em/1.4 'icomoon2';
+    margin-right: 4px;
+}
 #searchform {
     float: right;
     margin: 22px 0 22px 12px;

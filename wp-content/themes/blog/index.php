@@ -13,7 +13,7 @@
 		} elseif (is_archive()) {
 			single_term_title();
 		} else {
-			echo 'Últimos artículos';
+			echo 'Menú';
 		}
 		?>
 	</h1>
