@@ -60,11 +60,11 @@ a {
     margin: 5px 20px;
 }
 .logo {
-    background-image: url(../img/logo-new.png);
+    background-image: url(../img/logoheader.png);
     background-size: contain;
     display: inline-block;
-    height: 47px;
-    width: 170px;
+    height: 48px;
+    width: 212px;
 }
 #company-web-link {
     float: right;
@@ -348,14 +348,14 @@ a {
     font-family: Helvetica, Arial, sans-serif;
     margin: 60px 0 0;
     overflow: hidden;
-    padding: 16px;
+    padding: 20px;
 }
 
 .footer-block {
     border-left: 1px solid #fff;
     float: left;
     vertical-align: top;
-    max-width: 160px;
+    max-width: 132px;
     padding: 0 8px;
 }
 .footer-block h4 {
@@ -369,41 +369,35 @@ a {
     text-transform: none;
 }
 .wpcf7-text {
-    width: 140px;
+    width: 125px;
 }
 .wpcf7-textarea {
     height: 30px;
-    width: 140px;
+    width: 125px;
 }
 
 #footer-logos{
     border: none;
     float: right;
     margin: 0 auto;
-    max-width: 720px;
+    max-width: 750px;
     padding: 0;
+}
+.footer-logo {
+    background-image: url(../img/arbollogogrande.png);
+    background-size: contain;
+    height: 62px;
+    width: 228px;
 }
 #footer-logos a {
     display: inline-block;
     margin: 0 8px;
     vertical-align: middle;
 }
-#footer-logos .logo-casa {
-    height: 80px;
-    width: 212px;
+#footer-logos img {
     vertical-align: middle;
 }
-#footer-logos .logo-nota {
-    height: 67px;
-    width: 212px;
-    vertical-align: middle;
-}
-.footer-logo {
-    background-image: url(../img/logos-arbol.png);
-    background-size: contain;
-    height: 67px;
-    width: 212px;
-}
+
 
 @media only screen and (min-width: 533px) {
     #footer.collapsed {
@@ -416,27 +410,24 @@ a {
     .collapsed .footer-block h4 {
         line-height: 40px;
     }
-    .collapsed #footer-logos .logo-casa {
-        height: 40px;
-        width: 106px;
-    }
-    .collapsed #footer-logos .logo-nota {
-        height: 34px;
-        width: 106px;
-    }
     .collapsed .footer-logo {
-        height: 34px;
-        width: 106px;
+        height: 31px;
+        width: 114px;
+    }
+    .collapsed #footer-logos img {
+        height: 40px;
+        width: auto;
     }
 }
 
 /* RESPONSIVE */
-@media only screen and (max-width: 1260px) {
+@media only screen and (max-width: 1240px) {
     #footer-logos {
-        max-width: 220px;
+        max-width: 450px;
+        text-align: center;
     }
     .collapsed #footer-logos {
-        max-width: 380px;
+        max-width: 480px;
     }
 }
 
@@ -528,6 +519,9 @@ a {
 
     .footer-block {
         padding: 0 8px;
+    }
+    #footer-logos {
+        max-width: 250px;
     }
     #footer-logos a {
         margin: 0;
@@ -648,6 +642,9 @@ a {
     }
     #footer-logos {
         float: none;
+    }
+    .collapsed #footer-logos {
+        max-width: 250px;
     }
 }
 
