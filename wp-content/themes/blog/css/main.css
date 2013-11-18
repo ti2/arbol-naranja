@@ -18,7 +18,7 @@ body {
     background-color: #ededed;
     margin: 0 auto;
     max-width: 1280px;
-    padding: 58px 0 0;
+    padding: 48px 0 0;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -47,7 +47,7 @@ a {
     float: left;
     height: 48px;
     line-height: 48px;
-    margin: 5px 20px;
+    margin: 0 40px;
 }
 .logo {
     background-image: url(../img/logoheader.png);
@@ -84,37 +84,40 @@ a {
 }
 
 #main-nav {
-    font-family: Helvetica, Arial, sans-serif;
+    /*font-family: Helvetica, Arial, sans-serif;*/
 }
 .menu-main {
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 .menu-main li {
     display: inline-block;
     font-size: 14px;
     line-height: 2em;
     list-style: none;
-    margin: 15px;
+    margin: 10px 15px;
 }
 .menu-main li a {
-    color: #fff;
+    color: #aaa;
 }
 
 .menu-social {
-    float: right;
+    background: url('rgba.php/rgba(0, 0, 0, 0.5)');
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    right: 0;
+    top: 48px;
 }
 .menu-social .menu {
-    margin: 15px 10px;
+    margin: 4px 32px;
     padding: 0;
 }
 .menu-social .menu-item {
     display: inline-block;
-    margin: 0 8px;
+    margin: 0 6px;
 }
 .menu-social .menu-item a {
-    color: #fff;
+    color: #aaa;
     display: inline-block;
     font: 1em/1.75 'icomoon2';
     speak: none;
