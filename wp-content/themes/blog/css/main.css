@@ -161,6 +161,7 @@ a {
 }
 .main-block {
     border-top: 2px dashed #aaa;
+    margin: 0 0 24px;
 }
 .articles-title {
     float: left;
@@ -329,50 +330,31 @@ a {
 }
 
 /* FOOTER */
+.small-block {
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+}
+.wpcf7-text {
+}
+.wpcf7-textarea {
+    height: 30px;
+}
+
 #footer {
-    background: #111;
-    color: #fff;
-    font-family: Helvetica, Arial, sans-serif;
+    background: #333;
     margin: 60px 0 0;
     overflow: hidden;
     padding: 20px;
 }
 
-.footer-block {
-    border-left: 1px solid #fff;
-    float: left;
-    vertical-align: top;
-    max-width: 132px;
-    padding: 0 8px;
-}
-.footer-block h4 {
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0;
-}
-.footer-block p {
-    font-size: 12px;
-    margin: 6px auto;
-    text-transform: none;
-}
-.wpcf7-text {
-    width: 125px;
-}
-.wpcf7-textarea {
-    height: 30px;
-    width: 125px;
-}
-
 #footer-logos{
-    border: none;
-    float: right;
-    margin: 0 auto;
-    max-width: 750px;
-    padding: 0;
+    text-align: center;
 }
 .footer-logo {
     background-image: url(../img/arbollogogrande.png);
     background-size: contain;
+    float: left;
     height: 62px;
     width: 228px;
 }

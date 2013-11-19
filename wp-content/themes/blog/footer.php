@@ -1,19 +1,21 @@
-	<footer id="footer" role="contentinfo">
-		<div class="footer-block">
-			<h4>Contacto</h4>
+
+		<div class="main-block">
+			<h1>Información & Contacto.</h1>
 			<?php
 			$contact_info = kc_get_option( 'nso', 'home_options', 'contact_info' );
 			echo wpautop($contact_info);
 			?>
+
+			<?php dynamic_sidebar( 'footer-widget-area' ); ?>
 		</div>
 
-		<?php dynamic_sidebar( 'footer-widget-area' ); ?>
+	</div><!-- #articles -->
 
+	<footer id="footer" role="contentinfo">
 		<div id="footer-logos" class="footer-block">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="ir footer-logo"><?php bloginfo( 'name' ); ?></a>
-			<a href="http://casanaranja.co/"><img class="logo-casa" src="<?php bloginfo('template_directory'); ?>/img/casalogogrande.png" /></a>
-			<a href="http://notastupidoutfit.com/"><img class="logo-nota" src="<?php bloginfo('template_directory'); ?>/img/noatstupidlogogrande.png" /></a>
 			<a href="http://zumomag.com/"><img class="logo-zumo" src="<?php bloginfo('template_directory'); ?>/img/zumologogrande.png" /></a>
+			<a href="http://notastupidoutfit.com/"><img class="logo-nota" src="<?php bloginfo('template_directory'); ?>/img/noatstupidlogogrande.png" /></a>
 		</div>
 	</footer>
 
@@ -33,7 +35,7 @@
 
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
+  /*var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-39405153-1']);
   _gaq.push(['_setDomainName', 'arbolnaranja.com']);
   _gaq.push(['_setAllowLinker', true]);
@@ -43,7 +45,7 @@
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  })();*/
 
 </script>
 </body>

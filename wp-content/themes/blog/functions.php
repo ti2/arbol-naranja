@@ -48,7 +48,7 @@ function create_widgets_areas() {
 		'name' => 'Widgets footer',
 		'id' => 'footer-widget-area',
 		'description' => 'Widgets para el footer (formularios)',
-		'before_widget' => '<div class="footer-block">',
+		'before_widget' => '<div class="small-block">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4>',
 		'after_title' => '</h4>',
