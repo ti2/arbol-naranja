@@ -156,11 +156,13 @@ a {
 }
 
 #articles {
-    border-top: 2px dashed #aaa;
     margin: 0 auto;
     width: 970px;
 }
-#articles-title {
+.main-block {
+    border-top: 2px dashed #aaa;
+}
+.articles-title {
     float: left;
     font-size: 25px;
     margin: 22px 0;
@@ -186,11 +188,11 @@ a {
     padding: 1px 4px;
 }
 
-#article-list {
+.article-list {
     clear: both;
 }
-#article-list .gutter-sizer { width: 20px; }/*used by packery*/
-#article-list .post {
+.article-list .gutter-sizer { width: 20px; }/*used by packery*/
+.article-list .post {
     overflow: hidden;
     position: relative;
 }
@@ -206,12 +208,12 @@ a {
     height: 310px;
     width: 640px;
 }
-#article-list .post img {
+.article-list .post img {
     max-width: 100%;
     vertical-align: top;
     transition: all 2s;
 }
-#article-list .post:hover img {
+.article-list .post:hover img {
     transform: scale(1.05);
     transition: all 2s;
 }
@@ -440,19 +442,15 @@ a {
         margin: 17px 4px;
     }
 
-    #articles-title {
+    .articles-title {
         font-size: 17px;
         margin: 16px 0;
-    }
-    #articles-title:before {
-        border-width: 5px 0 5px 8px;
-        margin: 0 2px 1px 0;
     }
     #searchform {
         margin: 12px 0 12px 12px;
     }
 
-    #article-list .gutter-sizer { width: 17px; }/*used by packery*/
+    .article-list .gutter-sizer { width: 17px; }/*used by packery*/
     .size-pequeno {
         height: 115px;
         width: 115px;
@@ -573,15 +571,15 @@ a {
         margin: 10px 4px;
     }
 
-    #articles-title {
+    .articles-title {
         margin: 16px 10px;
     }
-    #article-list {
+    .article-list {
         margin: 0 auto;
         width: 300px;
     }
 
-    #article-list .gutter-sizer { width: 10px; }/*used by packery*/
+    .article-list .gutter-sizer { width: 10px; }/*used by packery*/
     .size-pequeno {
         height: 145px;
         width: 145px;

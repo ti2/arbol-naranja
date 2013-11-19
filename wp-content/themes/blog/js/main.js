@@ -1,6 +1,6 @@
 (function($) {
 	/* PACKERY */
-	var $container = $('#article-list');
+	var $container = $('.article-list');
 	// initialize
 	$container.packery({
 		itemSelector: 'article',
@@ -41,7 +41,7 @@
 			$visible_img.attr('src', new_src);
 		}
 	}
-	$('#article-list .post').hover(toggleImg, toggleImg);
+	$('.article-list .post').hover(toggleImg, toggleImg);
 
 	/* SEARCH FIELD HORIZONTAL SLIDE */
 	var search_width;

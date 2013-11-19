@@ -3,7 +3,7 @@
 		var $posts = $(html).filter('article');
 
 		if ($posts.length > 0) {
-			$('#article-list').append($posts).packery('appended', $posts.get());
+			$('.article-list').append($posts).packery('appended', $posts.get());
 		}
 
 		$('#load-more').text('Cargar más artículos');
@@ -25,7 +25,7 @@
 
 	var getPostsIds = function() {
 		var ids = [];
-		$('#article-list .post').each(function( index ) {
+		$('.article-list .post').each(function( index ) {
 			var post_html_id = $(this).attr('id');
 			var post_id = post_html_id.substr(post_html_id.lastIndexOf('-')+1);
 			ids.push(post_id);
@@ -73,11 +73,11 @@
 		};
 
 		//remove all elements before search
-		$('#article-list').packery('remove', $('#article-list .post').get());
-		$('#article-list .post').remove();
-		$('#article-list').packery('layout');
+		$('.article-list').packery('remove', $('.article-list .post').get());
+		$('.article-list .post').remove();
+		$('.article-list').packery('layout');
 
-		$('#articles-title').text('Resultados para: '+keywords);
+		$('.articles-title').text('Resultados para: '+keywords);
 
 		ajaxRequest(req_data);
 
@@ -98,13 +98,13 @@
 	//toca asi, porque estas funciones solo elementan elementos sencillos
 	var packery_ignore = function($elems) {
 		$elems.each(function( index ) {
-			$('#article-list').packery('ignore', $(this).get(0));
+			$('.article-list').packery('ignore', $(this).get(0));
 		});
 		$elems.addClass('hidden');
 	}
 	var packery_unignore = function($elems) {
 		$elems.each(function( index ) {
-			$('#article-list').packery('unignore', $(this).get(0));
+			$('.article-list').packery('unignore', $(this).get(0));
 		});
 		$elems.removeClass('hidden');
 	}
@@ -126,13 +126,13 @@
 
 	var filterCats = function(cat_id, cat_title, scroll) {
 		if (cat_id == '') {
-			var $posts_in_cat = $('#article-list .post');
+			var $posts_in_cat = $('.article-list .post');
 			changeTitle('');
 		} else {
-			var $posts_in_cat = $('#article-list .cat-'+cat_id);
+			var $posts_in_cat = $('.article-list .cat-'+cat_id);
 			changeTitle(cat_title);
 		}
-		$('#articles-title').text(cat_title);
+		$('.articles-title').text(cat_title);
 		changeLoadButton(cat_id, 'category');
 
 		//if there's at least one post in the category, show it
@@ -146,9 +146,9 @@
 
 		//hide posts not in category
 		if (cat_id != '') {
-			packery_ignore( $('#article-list .post').not('.cat-'+cat_id) );
+			packery_ignore( $('.article-list .post').not('.cat-'+cat_id) );
 		}
-		$('#article-list').packery('layout');
+		$('.article-list').packery('layout');
 
 		if (scroll !== false) {
 			scrollPage('articles');
@@ -208,7 +208,7 @@
 			history.replaceState( {page: 'home'}, null, loc.href );
 		} else if ($('body').hasClass('category')) {
 			var cat_id = $('#initial-cat').text();
-			var cat_title = $.trim( $('#articles-title').text() );
+			var cat_title = $.trim( $('.articles-title').text() );
 			history.replaceState( {cat_id: cat_id, cat_title: cat_title, page: 'cat'}, null, loc.href );
 		} else if ($('body').hasClass('single')) {
 			var html_id = $('#main article').attr('id');
@@ -261,7 +261,7 @@
 	$('#load-more').click(loadMore);
 	$('#searchform').submit(searchSubmit);
 	$('.cat-item').click(changeCat);
-	$('#article-list').on('click', '.post', requestPost);
+	$('.article-list').on('click', '.post', requestPost);
 	addHistory();
 	$(window).on('popstate', popState);
 	loadLargeImgs();
