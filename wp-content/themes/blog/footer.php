@@ -1,5 +1,4 @@
-
-		<div class="main-block" id="last-main-block">
+		<div class="main-block" id="footer-main-block">
 			<h1>Información & Contacto.</h1>
 			<mark><a href="mailto:info@arbolnaranja.com">info@arbolnaranja.com</a></mark>
 			<?php
@@ -10,6 +9,15 @@
 			<?php dynamic_sidebar( 'footer-widget-area' ); ?>
 		</div>
 
+		<div class="main-block social-sharing">
+			<h4>Compartir:</h4>
+			<!-- google plus -->
+			<a href="#" onclick="window.open('https://plus.google.com/share?url='+encodeURIComponent(location.href), 'googleplus-share-dialog', 'width=600,height=450'); return false;">Google +</a>
+			<!-- facebook share -->
+			<a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">Facebook</a>
+			<!-- twitter -->
+			<a href="#" onclick="window.open('https://twitter.com/share?url='+encodeURIComponent(location.href), 'twitter-share-dialog', 'width=550,height=450'); return false;">Twitter</a>
+		</div>
 	</div><!-- #articles -->
 
 	<footer id="footer" role="contentinfo">

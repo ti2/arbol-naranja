@@ -339,7 +339,7 @@ mark a {
 }
 
 /* FOOTER */
-#last-main-block h1 {
+#footer-main-block h1 {
     margin-bottom: 0;
 }
 .footer-widget {
@@ -371,6 +371,21 @@ mark a {
 }
 .wpcf7-submit {
     float: right;
+}
+
+.social-sharing {
+    font-size: 0.8em;
+    text-align: right;
+    text-transform: uppercase;
+}
+.social-sharing h4 {
+    display: inline-block;
+    margin: 10px 0;
+    text-decoration: underline;
+}
+.social-sharing a {
+    margin-left: 20px;
+    color: #fff;
 }
 
 #footer {
