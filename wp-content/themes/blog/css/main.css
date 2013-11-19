@@ -12,7 +12,6 @@
 body {
     color: #fff;
     font-family: Enriqueta, serif;
-    text-transform: uppercase;
 }
 #wrapper {
     background-color: #000;
@@ -23,9 +22,19 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
+h1 {
+    text-transform: uppercase;
+}
 a {
     color: #e27923;
     text-decoration: none;
+}
+mark {
+    background: #fff;
+    padding: 0 4px;
+}
+mark a {
+    color: #000;
 }
 
 /* HEADER */
@@ -84,7 +93,7 @@ a {
 }
 
 #main-nav {
-    /*font-family: Helvetica, Arial, sans-serif;*/
+    text-transform: uppercase;
 }
 .menu-main {
     margin: 0;
@@ -330,15 +339,38 @@ a {
 }
 
 /* FOOTER */
-.small-block {
+#last-main-block h1 {
+    margin-bottom: 0;
+}
+.footer-widget {
     display: inline-block;
     vertical-align: top;
     width: 49%;
 }
-.wpcf7-text {
+.footer-widget-title {
+    font-style: italic;
+    text-decoration: underline;
+}
+.wpcf7-form {
+    width: 28em;
+}
+.wpcf7-form label {
+    display: inline-block;
+    text-decoration: underline;
+    width: 5em;
+}
+.wpcf7-text, .wpcf7-textarea {
+    background: #000;
+    border: 1px solid #fff;
+    color: #fff;
+    font-style: italic;
+    width: 22em;
 }
 .wpcf7-textarea {
-    height: 30px;
+    height: 60px;
+}
+.wpcf7-submit {
+    float: right;
 }
 
 #footer {

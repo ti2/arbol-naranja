@@ -1,6 +1,7 @@
 
-		<div class="main-block">
+		<div class="main-block" id="last-main-block">
 			<h1>Información & Contacto.</h1>
+			<mark><a href="mailto:info@arbolnaranja.com">info@arbolnaranja.com</a></mark>
 			<?php
 			$contact_info = kc_get_option( 'nso', 'home_options', 'contact_info' );
 			echo wpautop($contact_info);
