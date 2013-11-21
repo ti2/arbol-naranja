@@ -5,30 +5,42 @@
 </main>
 
 <div id="articles">
-	<div class="main-block">
-		<h1 class="articles-title">
+	<?php
+	//para que no le ponga alto y ancho en el html
+	add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+	function remove_width_attribute( $html ) {
+		$html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+		return $html;
+	}
+
+	$categories = get_categories();
+	foreach ( $categories as $category ):
+	?>
+
+		<div class="main-block">
+			<h1 class="articles-title">
+				<?php
+				echo $category->name;
+				?>
+			</h1>
+
 			<?php
-			$search_query = get_search_query();
-			if ($search_query) {
-				echo 'Resultados para: '.$search_query;
-			} elseif (is_archive()) {
-				single_term_title();
-			} else {
-				echo 'Menú';
-			}
+			$args = array('cat' => $category->term_id, );
+			global $cat_query;
+			$cat_query = new WP_Query( $args );
 			?>
-		</h1>
 
-		<div class="article-list">
-			<?php if ( have_posts() ) : ?>
+			<div class="article-list">
+				<?php if ( $cat_query->have_posts() ) : ?>
 
-				<?php get_template_part('loop'); ?>
+					<?php get_template_part('loop'); ?>
 
-			<?php else : ?>
-				<div class="gutter-sizer"></div>
-				<p class="articles-msg">Su busqueda no ha arrojado resultados</p>
-			<?php endif; ?>
+				<?php else : ?>
+					<div class="gutter-sizer"></div>
+					<p class="articles-msg">Su busqueda no ha arrojado resultados</p>
+				<?php endif; ?>
+			</div>
 		</div>
-	</div>
+	<?php endforeach; ?>
 
 <?php get_footer(); ?>

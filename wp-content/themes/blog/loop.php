@@ -1,20 +1,13 @@
 <?php
-//para que no le ponga alto y ancho en el html
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-function remove_width_attribute( $html ) {
-	$html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-	return $html;
-}
-
-global $wp_query;
+global $cat_query;
 ?>
-<span class="hidden" id="total-posts"><?php echo $wp_query->found_posts; ?></span>
+<span class="hidden" id="total-posts"><?php echo $cat_query->found_posts; ?></span>
 <?php if (is_archive()) { ?>
 	<span class="hidden" id="initial-cat"><?php echo get_query_var('cat'); ?></span>
 <?php } ?>
 <div class="gutter-sizer"></div>
 
-<?php while ( have_posts() ) : the_post(); ?>
+<?php while ( $cat_query->have_posts() ) : $cat_query->the_post(); ?>
 
 	<?php
 	$sizes = get_the_terms( $post->ID, 'size' );
@@ -44,4 +37,9 @@ global $wp_query;
 		</a>
 	</article>
 
-<?php endwhile; ?>
+<?php
+endwhile;
+
+/* Restore original Post Data */
+wp_reset_postdata();
+?>
