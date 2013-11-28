@@ -137,6 +137,11 @@ function mytheme_options( $settings ) {
 					'title'   => 'Texto de bienvenida',
 					'type'    => 'editor'
 				),
+				array(
+					'id'      => 'clients',
+					'title'   => 'Nuestros Clientes',
+					'type'    => 'editor'
+				)
 			)
 		),
 		array(

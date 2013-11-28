@@ -51,4 +51,13 @@
 		</div>
 	<?php endforeach; ?>
 
+	<div class="main-block">
+		<h1 class="articles-title">Nuestros Clientes.</h1>
+		<?php
+			$clients = kc_get_option( 'nso', 'home_top_options', 'clients' );
+			echo wpautop($clients);
+		?>
+	</div>
+	<?php get_template_part('social'); ?>
+
 <?php get_footer(); ?>
