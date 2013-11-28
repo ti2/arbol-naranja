@@ -5,6 +5,13 @@
 </main>
 
 <div id="articles">
+	<div class="main-block">
+		<?php
+			$welcome = kc_get_option( 'nso', 'home_top_options', 'welcome' );
+			echo wpautop($welcome);
+		?>
+	</div>
+
 	<?php
 	//para que no le ponga alto y ancho en el html
 	add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );

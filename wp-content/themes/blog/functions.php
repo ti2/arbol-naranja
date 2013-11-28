@@ -128,6 +128,17 @@ function mytheme_options( $settings ) {
 			)
 		),
 		array(
+			'id'     => 'home_top_options',
+			'title'  => 'Contenido Home',
+			'fields' => array(
+				array(
+					'id'      => 'welcome',
+					'title'   => 'Texto de bienvenida',
+					'type'    => 'editor'
+				),
+			)
+		),
+		array(
 			'id'     => 'wrapper_background',
 			'title'  => 'Fondo contenedor',
 			'fields' => array(

@@ -24,6 +24,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
     text-transform: uppercase;
+    margin: 16px 0 0;
+}
+h2 {
+    font-size: 1.12em;
+    margin-top: 0;
 }
 a {
     color: #e27923;
@@ -175,7 +180,10 @@ mark a {
 .articles-title {
     float: left;
     font-size: 25px;
-    margin: 22px 0;
+    margin: 22px 0 0;
+}
+.main-block p {
+    font-size: 0.88em;
 }
 
 #searchtoggle {
@@ -371,6 +379,9 @@ mark a {
 }
 .wpcf7-submit {
     float: right;
+}
+.wpcf7-form br {
+    display: none;
 }
 
 .social-sharing {
