@@ -258,6 +258,9 @@
 		});
 	}
 
+	$('.go-to-top').click(function(){
+		scrollPage('top');
+	});
 	$('#load-more').click(loadMore);
 	$('#searchform').submit(searchSubmit);
 	$('.cat-item').click(changeCat);
