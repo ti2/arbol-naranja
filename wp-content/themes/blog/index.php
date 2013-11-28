@@ -30,6 +30,7 @@
 				echo $category->name;
 				?>
 			</h1>
+			<h2 class="cat-subtitle"><?php echo $category->description; ?></h2>
 
 			<?php
 			$args = array('cat' => $category->term_id, );

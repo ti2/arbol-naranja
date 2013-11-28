@@ -178,9 +178,11 @@ mark a {
     margin: 0 0 24px;
 }
 .articles-title {
-    float: left;
     font-size: 25px;
     margin: 22px 0 0;
+}
+.cat-subtitle {
+    font-style: italic;
 }
 .main-block p {
     font-size: 0.88em;
