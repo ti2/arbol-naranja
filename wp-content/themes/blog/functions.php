@@ -13,6 +13,7 @@ function arbol_setup() {
 	add_theme_support( 'post-thumbnails' );
 	//margin between images: 20px;
 	set_post_thumbnail_size( 145, 145, true );
+	add_image_size( 'full-thumb', 970, 370, true );
 	add_image_size( 'wide-thumb', 640, 310, true );
 	add_image_size( 'big-thumb', 310, 310, true );
 	add_image_size( 'huge', 1280, 960 );

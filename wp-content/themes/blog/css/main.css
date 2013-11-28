@@ -228,6 +228,10 @@ mark a {
     height: 310px;
     width: 640px;
 }
+.size-completo {
+    height: 370px;
+    width: 970px;
+}
 .article-list .post img {
     max-width: 100%;
     vertical-align: top;
@@ -251,6 +255,9 @@ mark a {
 }
 .size-ancho .title-over-img {
     font-size: 45px;
+}
+.size-completo .title-over-img {
+    font-size: 54px;
 }
 
 #load-more {

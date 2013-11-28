@@ -23,7 +23,9 @@ global $cat_query;
 		<a href="<?php the_permalink(); ?>">
 			<h1 class="title-over-img"><?php the_title(); ?></h1>
 			<?php
-			if ($first_size->slug == 'ancho') {
+			if ($first_size->slug == 'completo') {
+				$thumb_size = 'full-thumb';
+			}elseif ($first_size->slug == 'ancho') {
 				$thumb_size = 'wide-thumb';
 			}elseif ($first_size->slug == 'grande') {
 				$thumb_size = 'big-thumb';
