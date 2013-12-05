@@ -468,16 +468,6 @@ mark a {
 }
 
 /* RESPONSIVE */
-@media only screen and (max-width: 1240px) {
-    #footer-logos {
-        max-width: 450px;
-        text-align: center;
-    }
-    .collapsed #footer-logos {
-        max-width: 480px;
-    }
-}
-
 @media only screen and (max-width: 999px) {
     #articles, .main-post, #post-media {
         width: 511px;
@@ -523,6 +513,10 @@ mark a {
         height: 247px;
         width: 511px;
     }
+    .size-completo {
+        height: 195px;
+        width: 511px;
+    }
     .title-over-img {
         bottom: 10px;
         font-size: 17px;
@@ -563,8 +557,8 @@ mark a {
     .footer-block {
         padding: 0 8px;
     }
-    #footer-logos {
-        max-width: 250px;
+    .footer-widget {
+        width: auto;
     }
     #footer-logos a {
         margin: 0;
@@ -572,6 +566,9 @@ mark a {
 }
 
 @media only screen and (max-width: 532px) {
+    h1 {
+        font-size: 1.4em;
+    }
     #articles, .main-post, #post-media {
         width: 320px;
     }
@@ -652,6 +649,10 @@ mark a {
         height: 145px;
         width: 300px;
     }
+    .size-completo {
+        height: 115px;
+        width: 300px;
+    }
     .title-over-img {
         font-size: 18px;
     }
@@ -675,6 +676,17 @@ mark a {
         margin: 20px 10px 40px;
     }
 
+    .social-sharing a {
+        margin-left: 12px;
+    }
+
+    .wpcf7-form {
+        width: 19em;
+    }
+    .wpcf7-text, .wpcf7-textarea {
+        width: 21em;
+    }
+
     .footer-block {
         border-left: 0;
         border-bottom: 1px solid #fff;
@@ -686,8 +698,13 @@ mark a {
     #footer-logos {
         float: none;
     }
-    .collapsed #footer-logos {
-        max-width: 250px;
+    #footer-logos a {
+        display: block;
+        margin: 0 auto;
+    }
+    .footer-logo,
+    .go-to-top {
+        float: none;
     }
 }
 
