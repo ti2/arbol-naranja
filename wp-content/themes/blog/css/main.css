@@ -357,6 +357,11 @@ mark a {
     height: auto;
     max-width: 100%;
 }
+.box {
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0 12px;
+}
 
 /* FOOTER */
 #footer-main-block h1 {
