@@ -201,64 +201,10 @@ function category_id_class($classes) {
 }
 add_filter('post_class', 'category_id_class');
 
-//
-function load_more_button() {
-	global $wp_query;
-	$total = $wp_query->found_posts;
-	$posts_per_page = get_option('posts_per_page');
-
-	$term = get_queried_object();
-	if ( ! $term ) {
-		$term_id = '';
-		$taxonomy = '';
-	} else {
-		$term_id = $term->term_id;
-		$taxonomy = $term->taxonomy;
-	}
-
-	$classes = 'hidden';
-	if ($total > $posts_per_page) {
-		$classes = '';
-	}
-
-	echo "<button id='load-more' class='$classes' data-querytax='$taxonomy' data-queryterm='$term_id'>Cargar más artículos</button>";
+//para poder redirigir al PRIMERO y no al ultimo de la categoria
+function category_loop_order( $query ) {
+    if ( $query->is_category() && $query->is_main_query() ) {
+        $query->set( 'order', 'DESC' );
+    }
 }
-
-//AJAX
-add_action('wp_ajax_load_posts', 'load_posts_callback');
-add_action('wp_ajax_nopriv_load_posts', 'load_posts_callback');
-function load_posts_callback() {
-	$query_args = array('post__not_in' => $_POST['exclude']);
-
-	if ($_POST['term_id']) {
-		$query_args['tax_query'] = array(
-			array(
-				'taxonomy' => $_POST['taxonomy'],
-				'field' => 'id',
-				'terms' => $_POST['term_id']
-			)
-		);
-	}
-
-	if ($_POST['search']) {
-		$query_args['s'] = $_POST['search'];
-		$query_args['post_type'] = 'post';
-	}
-
-	query_posts($query_args);
-	get_template_part('loop');
-
-	die(); // this is required to return a proper result
-}
-
-add_action('wp_ajax_get_single', 'get_single_callback');
-add_action('wp_ajax_nopriv_get_single', 'get_single_callback');
-function get_single_callback() {
-	$post_id = $_POST['id'];
-	$id = substr($post_id, 5);
-
-	query_posts(array( 'p' => $id ));
-	get_template_part('loop', 'single');
-
-	die(); // this is required to return a proper result
-}
+add_action( 'pre_get_posts', 'category_loop_order' );
