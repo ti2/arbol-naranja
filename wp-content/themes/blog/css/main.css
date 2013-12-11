@@ -320,10 +320,9 @@ mark a {
 }
 .main-post header {
     border-bottom: 2px dashed #aaa;
-    margin: 0 70px;
 }
 .main-post h1 {
-    font-size: 34px;
+    font-size: 43px;
     margin-bottom: 0;
 }
 .main-post h3 {
@@ -343,14 +342,12 @@ mark a {
 }
 .post-content {
     color: #fff;
-    font-size: 14px;
-    margin: 30px 0 70px;
-    padding: 0 70px;
+    margin: 30px 0 0;
     text-align: justify;
     text-transform: none;
 }
 .post-content h4 {
-    font-size: 25px;
+    font-size: 1em;
 }
 .post-content img {
     height: auto;
@@ -407,6 +404,7 @@ mark a {
     text-transform: uppercase;
 }
 .social-sharing h4 {
+    color: #ccc;
     display: inline-block;
     margin: 12px 0;
     text-decoration: underline;

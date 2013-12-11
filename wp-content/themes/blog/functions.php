@@ -208,3 +208,9 @@ function category_loop_order( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'category_loop_order' );
+
+//shortcode para franja de compartir
+function social_share_shortcode( $atts ) {
+     return file_get_contents(locate_template('social.php'));
+}
+add_shortcode('social_share', 'social_share_shortcode');
