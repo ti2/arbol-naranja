@@ -319,13 +319,11 @@ mark a {
     width: 100%;
 }
 .main-post header {
-    border-bottom: 2px solid #DDDDDD;
+    border-bottom: 2px dashed #aaa;
     margin: 0 70px;
 }
 .main-post h1 {
-    color: #888;
-    font-size: 67px;
-    font-style: italic;
+    font-size: 34px;
     margin-bottom: 0;
 }
 .main-post h3 {
@@ -344,7 +342,8 @@ mark a {
     vertical-align: top !important;
 }
 .post-content {
-    font: 21px Garamond, "Times New Roman", Times, serif;
+    color: #fff;
+    font-size: 14px;
     margin: 30px 0 70px;
     padding: 0 70px;
     text-align: justify;
