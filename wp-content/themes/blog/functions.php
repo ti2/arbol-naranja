@@ -35,7 +35,8 @@ function arbol_setup() {
 
 	register_nav_menus( array(
 		'footer' => 'Menú para la parte inferior del sitio',
-		'social' => 'Enlaces a redes sociales'
+		'social' => 'Enlaces a redes sociales',
+		'main' => 'Menú principal'
 	) );
 }
 add_action( 'after_setup_theme', 'arbol_setup' );

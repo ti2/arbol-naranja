@@ -35,9 +35,7 @@
 			<h3 class="menu-toggle">Secciones</h3>
 
 			<nav id="main-nav" role="navigation">
-				<ul class="menu-main">
-				<?php wp_list_categories('orderby=ID&title_li='); ?>
-				</ul>
+				<?php wp_nav_menu( array('theme_location' => 'main', 'container' => false, 'menu_class' => 'menu-main' )); ?>
 			</nav>
 
 		</div>
