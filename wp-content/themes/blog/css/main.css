@@ -427,22 +427,19 @@ hr {
 }
 
 #footer-logos{
-    text-align: center;
 }
 .footer-logo {
     background-image: url(../img/arbollogogrande.png);
     background-size: contain;
-    float: left;
     height: 62px;
     width: 228px;
 }
 #footer-logos a {
     display: inline-block;
     margin: 0 8px;
-    vertical-align: middle;
+    vertical-align: top;
 }
 #footer-logos img {
-    vertical-align: middle;
 }
 
 .go-to-top {
