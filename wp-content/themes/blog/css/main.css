@@ -49,6 +49,10 @@ hr {
     border-color: #aaa;
     border-width: 2px 0 0;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 /* HEADER */
 #header {
