@@ -104,6 +104,15 @@ function my_post_fields( $groups ) {
 						'desc'    => '',
 						'type'    => 'text',
 						'default' => ''
+					),
+					array(
+						'id'      => 'hide_in_home',
+						'title'   => 'Hide in Home',
+						'type'    => 'checkbox',
+						'options' => array(
+							'checkbox_home' => 'Hide'
+						),
+						'default'	=> 'checkbox_home'
 					)
 				)
 			)

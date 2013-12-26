@@ -33,7 +33,16 @@
 			<h2 class="cat-subtitle"><?php echo $category->description; ?></h2>
 
 			<?php
-			$args = array('cat' => $category->term_id, );
+			$args = array(
+				'cat' => $category->term_id,
+				'meta_query' => array(
+					array(
+						'key' => '_hide_in_home',
+						'value' => 'checkbox_home',
+						'compare' => 'NOT EXISTS'
+					)
+				)
+			);
 			global $cat_query;
 			$cat_query = new WP_Query( $args );
 			?>
