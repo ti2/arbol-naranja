@@ -21,7 +21,6 @@ global $cat_query;
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class('post '.$size_class); ?>>
 		<a href="<?php the_permalink(); ?>">
-			<h1 class="title-over-img"><?php the_title(); ?></h1>
 			<?php
 			if ($first_size->slug == 'completo') {
 				$thumb_size = 'full-thumb';
