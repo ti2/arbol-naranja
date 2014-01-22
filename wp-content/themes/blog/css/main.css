@@ -17,7 +17,7 @@ body {
     background-color: #000;
     margin: 0 auto;
     max-width: 1280px;
-    padding: 48px 0 0;
+    padding: 44px 0 0;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -56,8 +56,7 @@ img {
 
 /* HEADER */
 #header {
-    background: url('rgba.php/rgba(0, 0, 0, 0.8)');
-    background: rgba(0,0,0,.8);
+    background: url(../img/bg.repeatX-bannerPrincipal.png) repeat-x;
     left: 0;
     margin: 0 auto 10px;
     position: fixed;
@@ -71,16 +70,16 @@ img {
 }
 #header-logo {
     float: left;
-    height: 48px;
-    line-height: 48px;
-    margin: 0 40px;
+    height: 36px;
+    line-height: 36px;
+    margin: 4px 40px;
 }
 .logo {
     background-image: url(../img/logoheader.png);
     background-size: contain;
     display: inline-block;
-    height: 48px;
-    width: 212px;
+    height: 36px;
+    width: 159px;
 }
 #company-web-link {
     float: right;
@@ -121,21 +120,20 @@ img {
     font-size: 14px;
     line-height: 2em;
     list-style: none;
-    margin: 10px 15px;
+    margin: 8px 15px;
 }
 .menu-main li a {
     color: #aaa;
 }
 
 .menu-social {
-    background: url('rgba.php/rgba(0, 0, 0, 0.5)');
-    background: rgba(0,0,0,.5);
+    background: url(../img/bg.banner-redessociales.png) no-repeat;
     position: absolute;
     right: 0;
-    top: 48px;
+    top: 42px;
 }
 .menu-social .menu {
-    margin: 4px 32px;
+    margin: 4px 20px 4px 48px;
     padding: 0;
 }
 .menu-social .menu-item {
@@ -503,7 +501,7 @@ img {
         width: 511px;
     }
     #header-logo {
-        margin: 5px 10px;
+        margin: 4px 10px;
     }
     .menu-toggle {
         font-size: 16px;
@@ -519,7 +517,7 @@ img {
 
     .menu-main li {
         font-size: 12px;
-        margin: 17px 4px;
+        margin: 10px 4px;
     }
 
     .articles-title {
@@ -613,9 +611,9 @@ img {
         background-image: url(../img/iphone-menu-white.png);
         display: block;
         float: right;
-        height: 46px;
-        line-height: 48px;
-        margin: 6px 20px;
+        height: 44px;
+        line-height: 44px;
+        margin: 0 20px;
         overflow: hidden;
         width: 45px;
         /* IE 6/7 fallback */
