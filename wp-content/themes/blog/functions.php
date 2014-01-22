@@ -38,6 +38,13 @@ function arbol_setup() {
 				'post_type' => 'team'
 			)
 		);
+		new MultiPostThumbnails(
+			array(
+				'label' => 'Imagen Grande',
+				'id' => 'static-image',
+				'post_type' => 'caso'
+			)
+		);
 	}
 
 	register_nav_menus( array(
@@ -76,6 +83,14 @@ function arbol_custom_post_types() {
 		'hierarchical' => true
 	);
 	register_post_type('team', $args);
+
+	$args = array(
+		'public' => true,
+		'label' => 'Casos de Éxito',
+		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes', 'post-formats'),
+		'hierarchical' => true
+	);
+	register_post_type('caso', $args);
 }
 
 add_action('init', 'arbol_custom_post_types');
@@ -135,6 +150,27 @@ function my_post_fields( $groups ) {
 							'checkbox_home' => 'Hide'
 						),
 						'default'	=> 'checkbox_home'
+					)
+				)
+			)
+		),
+		'caso' => array(
+			array(
+				'id'     => 'custom_fields',
+				'title'  => 'Info Adicional',
+				'desc'   => '',
+				/**
+				 * Optional. Uncomment this to only display the metadata settings for
+				 * certain user roles.
+				 */
+				// 'role'   => array( 'administrator', 'editor' ),
+				'fields' => array(
+					array(
+						'id'      => 'video_url',
+						'title'   => 'Youtube video url',
+						'desc'    => '',
+						'type'    => 'text',
+						'default' => ''
 					)
 				)
 			)
@@ -252,7 +288,18 @@ function team_shortcode( $atts ) {
 	ob_start();
 	get_template_part('loop', 'team');
 	$output = ob_get_contents();
-    ob_end_clean();
-    return $output;
+	ob_end_clean();
+	return $output;
 }
 add_shortcode('team_gallery', 'team_shortcode');
+
+
+//shortcode para archivo de equipo
+function caso_shortcode( $atts ) {
+	ob_start();
+	get_template_part('loop', 'caso');
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
+}
+add_shortcode('casos_exito', 'caso_shortcode');
