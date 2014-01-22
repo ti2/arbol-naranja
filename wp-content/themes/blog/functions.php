@@ -235,14 +235,24 @@ add_filter('post_class', 'category_id_class');
 
 //para poder redirigir al PRIMERO y no al ultimo de la categoria
 function category_loop_order( $query ) {
-    if ( $query->is_category() && $query->is_main_query() ) {
-        $query->set( 'order', 'DESC' );
-    }
+	if ( $query->is_category() && $query->is_main_query() ) {
+		$query->set( 'order', 'DESC' );
+	}
 }
 add_action( 'pre_get_posts', 'category_loop_order' );
 
 //shortcode para franja de compartir
 function social_share_shortcode( $atts ) {
-     return file_get_contents(locate_template('social.php'));
+	return file_get_contents(locate_template('social.php'));
 }
 add_shortcode('social_share', 'social_share_shortcode');
+
+//shortcode para archivo de equipo
+function team_shortcode( $atts ) {
+	ob_start();
+	get_template_part('loop', 'team');
+	$output = ob_get_contents();
+    ob_end_clean();
+    return $output;
+}
+add_shortcode('team_gallery', 'team_shortcode');

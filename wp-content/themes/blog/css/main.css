@@ -368,6 +368,28 @@ img {
     padding: 0 12px;
 }
 
+.team-archive {
+    letter-spacing: 32px;
+    text-align: left;
+}
+.team-member {
+    display: inline-block;
+    letter-spacing: normal;
+    margin: 32px 0;
+    text-align: center;
+    vertical-align: top;
+    width: 215px;
+}
+.team-member h2 {
+    color: #fff;
+    margin: 0.5em 0 0;
+    text-transform: uppercase;
+}
+.team-member p {
+    color: #ef583f;
+    margin: 0;
+}
+
 /* FOOTER */
 #footer-main-block h1 {
     margin-bottom: 0;
