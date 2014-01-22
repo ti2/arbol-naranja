@@ -836,3 +836,8 @@ img {
 .clearfix {
     *zoom: 1;
 }
+
+/*fancybox hack*/
+#fancybox-outer, #fancybox-content {
+    border-color: #000 !important;
+}
