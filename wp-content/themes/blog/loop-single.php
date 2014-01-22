@@ -1,8 +1,8 @@
 <?php while ( have_posts() ) : the_post(); ?>
 	<?php
 	if ( has_post_format( 'image' )) {
-		$large_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'huge');
-		$mobile_img = MultiPostThumbnails::get_post_thumbnail_url('post', 'static-image', null, 'mobile-first');
+		$large_img = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'static-image', null, 'huge');
+		$mobile_img = MultiPostThumbnails::get_post_thumbnail_url(get_post_type(), 'static-image', null, 'mobile-first');
 		echo '<div class="full-image">';
 		echo '<span data-fullsrc="'.$large_img.'" data-src="'.$mobile_img.'" class="responsivize">';
 		echo '<noscript><img src="'.$mobile_img.'" /></noscript>';

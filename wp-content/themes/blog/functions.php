@@ -31,6 +31,13 @@ function arbol_setup() {
 				'id' => 'static-image'
 			)
 		);
+		new MultiPostThumbnails(
+			array(
+				'label' => 'Imagen Grande',
+				'id' => 'static-image',
+				'post_type' => 'team'
+			)
+		);
 	}
 
 	register_nav_menus( array(
@@ -57,6 +64,21 @@ function create_widgets_areas() {
 	) );
 }
 add_action( 'widgets_init', 'create_widgets_areas' );
+
+/**
+ * Custom post types
+ */
+function arbol_custom_post_types() {
+	$args = array(
+		'public' => true,
+		'label' => 'Miembros del Equipo',
+		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes', 'post-formats'),
+		'hierarchical' => true
+	);
+	register_post_type('team', $args);
+}
+
+add_action('init', 'arbol_custom_post_types');
 
 function create_taxonomies()
 {
