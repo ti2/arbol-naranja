@@ -15,7 +15,7 @@
 
 		$(window).scroll(function () {
 			//display menu on first scroll
-			if ($(this).scrollTop() > 0 && $nav.is(':hidden') && window_width > 532) {
+			if ($(this).scrollTop() > 0 && $nav.is(':hidden') && window_width > 700) {
 				$('#main-nav').slideDown();
 			}
 
@@ -68,7 +68,7 @@
 	/* MENU TOGGLE */
 	var toggleMenu = function()
 	{
-		if (window_width <= 532) {
+		if (window_width <= 700) {
 			$('#main-nav, .menu-social').toggleClass('left');
 		}
 	}
@@ -77,7 +77,7 @@
 	{
 		var $nav = $('#main-nav');
 
-		if (window_width <= 532) {
+		if (window_width <= 700) {
 			$nav.addClass('left');
 			$('.menu-social').addClass('left');
 		}
@@ -128,7 +128,7 @@
 	$(window).resize(adjustMenu);
 	$('.menu-toggle').click(toggleMenu);
 	$('#main-nav a').click(function() {
-		if (window_width <= 532) {
+		if (window_width <= 700) {
 			toggleMenu();
 		}
 	});
