@@ -444,7 +444,7 @@ img {
 }
 
 #footer {
-    background: #333;
+    background: url(../img/bg.repeatX-bannerPrincipal.png) repeat-x;
     margin: 60px 0 0;
     overflow: hidden;
     padding: 20px;
@@ -477,7 +477,7 @@ img {
 @media only screen and (min-width: 533px) {
     #footer.collapsed {
         height: 40px;
-        padding: 5px 16px;
+        padding: 2px 16px;
     }
     .collapsed .footer-block {
         border: 0;
