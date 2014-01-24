@@ -717,6 +717,9 @@ img {
         width: 21em;
     }
 
+    #footer {
+        background: #333;
+    }
     .footer-block {
         border-left: 0;
         border-bottom: 1px solid #fff;
@@ -731,10 +734,12 @@ img {
     #footer-logos a {
         display: block;
         margin: 0 auto;
+        text-align: center;
     }
     .footer-logo,
     .go-to-top {
         float: none;
+        text-align: center;
     }
 }
 
