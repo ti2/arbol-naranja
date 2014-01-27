@@ -45,6 +45,13 @@ function arbol_setup() {
 				'post_type' => 'caso'
 			)
 		);
+		new MultiPostThumbnails(
+			array(
+				'label' => 'Imagen Grande',
+				'id' => 'static-image',
+				'post_type' => 'record'
+			)
+		);
 	}
 
 	register_nav_menus( array(
@@ -91,6 +98,14 @@ function arbol_custom_post_types() {
 		'hierarchical' => true
 	);
 	register_post_type('caso', $args);
+
+	$args = array(
+		'public' => true,
+		'label' => 'Discos',
+		'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes', 'post-formats'),
+		'hierarchical' => true
+	);
+	register_post_type('record', $args);
 }
 
 add_action('init', 'arbol_custom_post_types');
@@ -293,8 +308,7 @@ function team_shortcode( $atts ) {
 }
 add_shortcode('team_gallery', 'team_shortcode');
 
-
-//shortcode para archivo de equipo
+//shortcode para archivo de casos de éxito
 function caso_shortcode( $atts ) {
 	ob_start();
 	get_template_part('loop', 'caso');
@@ -303,3 +317,13 @@ function caso_shortcode( $atts ) {
 	return $output;
 }
 add_shortcode('casos_exito', 'caso_shortcode');
+
+//shortcode para archivo de discos
+function record_shortcode( $atts ) {
+	ob_start();
+	get_template_part('loop', 'record');
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
+}
+add_shortcode('records_gallery', 'record_shortcode');
