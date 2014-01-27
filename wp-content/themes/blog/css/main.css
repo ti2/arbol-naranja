@@ -32,15 +32,15 @@ h2 {
     margin-top: 0;
 }
 a {
-    color: #e27923;
-    text-decoration: none;
+    color: #e27923 !important;
+    text-decoration: none !important;
 }
 mark {
     background: #fff;
     padding: 0 4px;
 }
 mark a {
-    color: #000;
+    color: #000 !important;
     font-size: 0.88em;
     font-style: italic;
 }
@@ -123,7 +123,7 @@ img {
     margin: 8px 15px;
 }
 .menu-main li a {
-    color: #aaa;
+    color: #aaa !important;
 }
 
 .menu-social {
@@ -141,7 +141,7 @@ img {
     margin: 0 6px;
 }
 .menu-social .menu-item a {
-    color: #aaa;
+    color: #aaa !important;
     display: inline-block;
     font: 1em/1.75 'icomoon2';
     speak: none;
@@ -362,7 +362,7 @@ img {
 }
 .box {
     border: 1px solid #fff;
-    color: #fff;
+    color: #fff !important;
     padding: 0 12px;
 }
 
@@ -440,7 +440,7 @@ img {
 }
 .social-sharing a {
     margin-left: 20px;
-    color: #ccc;
+    color: #ccc !important;
 }
 
 #footer {
