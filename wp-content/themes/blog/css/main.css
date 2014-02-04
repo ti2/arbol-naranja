@@ -120,10 +120,27 @@ img {
     font-size: 14px;
     line-height: 2em;
     list-style: none;
-    margin: 8px 15px;
+    padding: 8px 15px;
+    position: relative;
 }
 .menu-main li a {
     color: #aaa !important;
+}
+.sub-menu {
+    background: url('rgba.php/rgba(0, 0, 0, 0.8)');
+    background: rgba(0,0,0,.8);
+    display: none;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+}
+.sub-menu li {
+    display: block;
+    white-space: nowrap;
+}
+.menu-main li:hover .sub-menu {
+    display: block;
 }
 
 .menu-social {
@@ -517,7 +534,7 @@ img {
 
     .menu-main li {
         font-size: 12px;
-        margin: 10px 4px;
+        padding: 10px 4px;
     }
 
     .articles-title {
@@ -624,7 +641,7 @@ img {
         background: rgba(0,0,0,.8);
         left: 0;
         position: absolute;
-        top: 260px;
+        top: 320px;
         transition: all 0.5s;
         width: 67%;
     }
@@ -633,7 +650,7 @@ img {
     }
 
     #main-nav {
-        top: 58px;
+        top: 44px;
     }
     .menu-main {
         /*height: 100%;*/
@@ -643,7 +660,15 @@ img {
     .menu-main li {
         display: block;
         font-size: 14px;
-        margin: 10px 4px;
+        padding: 10px 4px;
+    }
+    .sub-menu {
+        display: block;
+        padding-left: 5%;
+        position: static;
+    }
+    .sub-menu li {
+        padding: 4px;
     }
 }
 
